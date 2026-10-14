@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+/* ---------- Design tokens ---------- */
+@theme {
+  --color-ivory: #f8f5ef;
+  --color-sand: #efe8db;
+  --color-ink: #0a1a2f;
+  --color-navy: #0e2747;
+  --color-navy-2: #16345c;
+  --color-brand: #0b3a8c;
+  --color-gold: #fd7113; /* logo orange */
+  --color-gold-soft: #ffb07a;
+  --color-gold-deep: #b04507; /* orange for text on light backgrounds (readable) */
+  --color-slate: #4f5d74;
+  --color-mist: #b9c4d6;
+
+  --font-serif: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Manrope Variable", "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+    background: var(--color-ivory);
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: var(--color-ivory);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: var(--color-gold-soft);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  [data-dark] :focus-visible {
+    outline-color: var(--color-gold);
+  }
+  [data-light] :focus-visible {
+    outline-color: var(--color-brand);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+}
+
+@layer components {
+  .container-x {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1320px;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 640px) { .container-x { padding-inline: 2rem; } }
+  @media (min-width: 1024px) { .container-x { padding-inline: 3.5rem; } }
+
+  .section-pad {
+    padding-block: 5.5rem;
+  }
+  @media (min-width: 1024px) { .section-pad { padding-block: 8.5rem; } }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-gold-deep);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 2.25rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.7;
+  }
+  .eyebrow-dark { color: var(--color-gold); }
+
+  .h-display {
+    font-size: clamp(2.5rem, 5.4vw, 4.75rem);
+  }
+  .h-section {
+    font-size: clamp(2.1rem, 4vw, 3.5rem);
+  }
+  .lead {
+    font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+    line-height: 1.75;
+    color: var(--color-slate);
+  }
+
+  .btn {
+    display: inline-flex;
+    min-height: 3.25rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border-radius: 999px;
+    padding-inline: 1.9rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background-color 0.35s var(--ease-lux), color 0.35s var(--ease-lux),
+      transform 0.2s var(--ease-lux), box-shadow 0.35s var(--ease-lux), border-color 0.35s;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .btn-primary {
+    background: var(--color-navy);
+    color: var(--color-ivory);
+    box-shadow: 0 10px 30px -12px rgba(14, 39, 71, 0.6);
+  }
+  .btn-primary:hover { background: var(--color-brand); }
+  .btn-gold {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+  .btn-gold:hover { background: var(--color-gold-soft); }
+  .btn-outline {
+    border: 1px solid currentColor;
+    background: transparent;
+  }
+  .btn-outline:hover { background: rgba(255, 255, 255, 0.1); }
+
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    opacity: 0.6;
+  }
+}

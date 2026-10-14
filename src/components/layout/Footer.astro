@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../../assets/images/logo.webp';
+import { site, locations, footerLinks } from '../../data/content';
+const year = new Date().getFullYear();
+---
+
+<footer data-dark class="bg-ink text-ivory">
+  <div class="container-x py-16 lg:py-24">
+    <div class="grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <div class="inline-block rounded-2xl bg-ivory px-5 py-3">
+          <Image src={logo} alt="The Stem Cell Institute" width={220} class="h-auto w-[200px]" />
+        </div>
+        <p class="mt-6 max-w-xs text-mist">
+          Physician-led regenerative medicine, shaped around you.
+        </p>
+        <a href={site.phoneHref} class="mt-6 inline-block font-serif text-3xl hover:text-gold">{site.phone}</a>
+        {
+          site.socials.length > 0 && (
+            <ul class="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+              {site.socials.map((s) => (
+                <li>
+                  <a href={s.href} class="text-sm font-semibold uppercase tracking-wider text-mist hover:text-gold" rel="noopener noreferrer" target="_blank">
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+
+      {
+        Object.entries(footerLinks).map(([title, links]) => (
+          <nav aria-label={title} class="lg:col-span-2">
+            <h2 class="font-sans text-xs font-bold uppercase tracking-[0.24em] text-gold">{title}</h2>
+            <ul class="mt-5 space-y-3">
+              {links.map((l) => (
+                <li>
+                  <a href={l.href} class="inline-flex min-h-8 items-center text-mist transition-colors hover:text-ivory">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
+
+      <div class="lg:col-span-4">
+        <h2 class="font-sans text-xs font-bold uppercase tracking-[0.24em] text-gold">Locations</h2>
+        <ul class="mt-5 space-y-5 text-mist">
+          {
+            locations.map((l) => (
+              <li>
+                <strong class="block font-semibold text-ivory">{l.name}</strong>
+                {l.street}
+                <br />
+                {l.city}, FL {l.zip}
+              </li>
+            ))
+          }
+        </ul>
+        <a href="#contact" class="btn btn-gold mt-8">Book a Consultation</a>
+      </div>
+    </div>
+
+    <div class="hairline mt-16"></div>
+    <div class="mt-8 flex flex-col gap-4 text-sm text-mist/80 lg:flex-row lg:items-start lg:justify-between">
+      <p>© {year} {site.name}. All rights reserved.</p>
+      <p class="max-w-2xl lg:text-right">
+        This website is for general information and is not medical advice. Treatments are directed by
+        a licensed physician after consultation. Results vary from person to person.
+      </p>
+    </div>
+  </div>
+</footer>
