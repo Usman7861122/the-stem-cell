@@ -106,7 +106,6 @@ export const services = [
 export const concerns = [
   'Joint Pain & Recovery',
   'Low Energy & Chronic Fatigue',
-  'Skin Aging & Hair Thinning',
   'Brain Fog & Poor Focus',
   'Weight & Metabolism',
   'Immune Health',
