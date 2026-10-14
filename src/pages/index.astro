@@ -10,6 +10,7 @@ import Pillars from '../islands/interactive/Pillars';
 import About from '../islands/interactive/About';
 import Care from '../islands/interactive/Care';
 import WhyChoose from '../islands/interactive/WhyChoose';
+import Physician from '../islands/interactive/Physician';
 import Path from '../islands/interactive/Path';
 import Testimonials from '../islands/interactive/Testimonials';
 import Gallery from '../islands/interactive/Gallery';
@@ -42,7 +43,7 @@ const galleryItems = [
       client:visible
       photos={{ spineModel: p.spineModel, ultrasound: p.ultrasound, consultation: p.consultation }}
     />
-    <About client:visible main={p.doctorPortrait} />
+    <About client:visible />
     <Care
       client:visible
       photos={{
@@ -54,6 +55,7 @@ const galleryItems = [
     />
     <WhyChoose client:visible />
     <Path client:visible />
+    <Physician client:visible photo={p.doctorPortrait} />
     <Testimonials client:visible />
     <Gallery client:visible items={galleryItems} />
     <Locations client:visible />
