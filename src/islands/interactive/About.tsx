@@ -37,7 +37,7 @@ function IntroVideo() {
       <video
         ref={video}
         className="h-full w-full object-cover"
-        poster="/videos/about-intro-v3-poster.webp"
+        poster="/videos/about-intro-v2-poster.webp"
         muted
         playsInline
         preload="metadata"
@@ -46,7 +46,7 @@ function IntroVideo() {
         onEnded={() => setState('ended')}
         aria-label="Animated stem cells, ending with The Stem Cell Institute logo and tagline"
       >
-        <source src="/videos/about-intro-v3.mp4" type="video/mp4" />
+        <source src="/videos/about-intro-v2.mp4" type="video/mp4" />
       </video>
       <button
         type="button"
