@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/layout/Footer.astro';
+import { getPhotos } from '../lib/images';
+import Header from '../islands/interactive/Header';
+import BrainsPage from '../islands/interactive/BrainsPage';
+import Contact from '../islands/interactive/Contact';
+
+const p = await getPhotos();
+---
+
+<BaseLayout
+  title="Rebuilding Brains™ | Alzheimer's & Memory Care | The Stem Cell Institute"
+  description="Dr. William J. Cole Jr., D.O. explains the Rebuild Your Brain™ Program: advanced regenerative medicine for Alzheimer's dementia, memory loss and cognitive decline. Zoom consultations nationwide."
+>
+  <Header client:load logo={p.logo} logoLight={p.logoLight} />
+  <main id="main">
+    <BrainsPage client:load hero={p.brainsMemory}
+      doctor={p.doctorPortrait}
+      care={p.brainsScanReview}
+      story={p.brainsMotherDaughter}
+      family={p.brainsFamily}
+      generations={p.brainsGenerations} />
+    <Contact client:visible photo={p.reception} />
+  </main>
+  <Footer />
+</BaseLayout>

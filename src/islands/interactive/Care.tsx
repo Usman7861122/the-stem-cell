@@ -31,7 +31,7 @@ export default function Care({ photos }: { photos: Record<string, Photo> }) {
               Modern medicine, <em className="text-gold-deep">built around you</em>
             </h2>
             <p className="lead mt-6">
-              Four areas of care, one team. Every treatment starts with testing and a clear plan.
+              Six areas of care, one team. Every treatment starts with testing and a clear plan.
             </p>
           </Reveal>
 
@@ -40,7 +40,7 @@ export default function Care({ photos }: { photos: Record<string, Photo> }) {
             <div
               role="tablist"
               aria-orientation="vertical"
-              aria-label="Areas of care"
+              aria-label="Our treatments"
               className="lg:col-span-5"
             >
               {services.map((s, i) => {
@@ -59,7 +59,7 @@ export default function Care({ photos }: { photos: Record<string, Photo> }) {
                     onClick={() => setActive(i)}
                     onMouseEnter={() => window.matchMedia('(hover: hover)').matches && setActive(i)}
                     onKeyDown={(e) => onKey(e, i)}
-                    className="group relative block w-full cursor-pointer border-t border-ink/15 py-6 text-left last:border-b"
+                    className="group relative block w-full cursor-pointer border-t border-ink/15 py-5 text-left last:border-b"
                   >
                     <span className="flex items-baseline gap-5">
                       <span className={`font-serif text-base transition-colors ${on ? 'text-gold-deep' : 'text-slate'}`}>
@@ -134,9 +134,19 @@ export default function Care({ photos }: { photos: Record<string, Photo> }) {
                         </motion.li>
                       ))}
                     </ul>
+                    {'href' in current && current.href && (
+                      <a
+                        href={current.href}
+                        className="btn btn-gold mt-9 !min-h-11 !px-6 text-sm"
+                      >
+                        Learn more about {current.title}
+                      </a>
+                    )}
                     <a
-                      href="#contact"
-                      className="group mt-9 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.16em] text-gold"
+                      href="/#contact"
+                      className={`group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.16em] text-gold ${
+                        'href' in current && current.href ? 'mt-6 sm:ml-8' : 'mt-9'
+                      }`}
                     >
                       Ask about this care
                       <ArrowUpRight
@@ -158,7 +168,7 @@ export default function Care({ photos }: { photos: Record<string, Photo> }) {
               {concerns.map((c) => (
                 <li key={c}>
                   <a
-                    href="#contact"
+                    href="/#contact"
                     className="inline-flex min-h-11 items-center rounded-full border border-ink/20 px-5 text-[0.92rem] font-semibold transition-colors duration-300 hover:border-navy hover:bg-navy hover:text-ivory"
                   >
                     {c}

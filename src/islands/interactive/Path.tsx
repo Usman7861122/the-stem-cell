@@ -47,7 +47,7 @@ export default function Path() {
               Four clear steps, from your first conversation to long-term support.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-5">
-              <a href="#contact" className="btn btn-primary">
+              <a href="/#contact" className="btn btn-primary">
                 Start with a Consultation
               </a>
               {site.consultationPrice && (

@@ -8,6 +8,7 @@ import Hero from '../islands/interactive/Hero';
 import Highlights from '../islands/interactive/Highlights';
 import Pillars from '../islands/interactive/Pillars';
 import About from '../islands/interactive/About';
+import RebuildingBrains from '../islands/interactive/RebuildingBrains';
 import Care from '../islands/interactive/Care';
 import WhyChoose from '../islands/interactive/WhyChoose';
 import Physician from '../islands/interactive/Physician';
@@ -33,9 +34,9 @@ const galleryItems = [
 
 <BaseLayout
   title="The Stem Cell Institute | Regenerative Medicine in Sarasota & Venice, FL"
-  description="Physician-led regenerative medicine in Sarasota and Venice, Florida. Stem cell therapy, PRP, exosomes, longevity and personalized wellness plans built around you."
+  description="Physician-led regenerative medicine in Sarasota and Venice, Florida. Stem cell therapy, exosome therapy, peptide therapy, hormone therapy, weight loss and IV therapy, built around you."
 >
-  <Header client:load logo={p.logo} />
+  <Header client:load logo={p.logo} logoLight={p.logoLight} />
   <main id="main">
     <Hero client:load banner={p.banner} />
     <Highlights client:visible />
@@ -44,13 +45,17 @@ const galleryItems = [
       photos={{ spineModel: p.spineModel, ultrasound: p.ultrasound, consultation: p.consultation }}
     />
     <About client:visible />
+    <RebuildingBrains client:visible photo={p.brainsScanDoctor} />
     <Care
       client:visible
       photos={{
-        ultrasound: p.teamSkeleton,
         consultation: p.consultation,
+        ultrasound: p.ultrasound,
+        spineModel: p.spineModel,
+        teamSkeleton: p.teamSkeleton,
+        doctorPortrait: p.doctorPortrait,
         reception: p.reception,
-        teamSkeleton: p.spineModel,
+        hormoneLab: p.hormoneLab,
       }}
     />
     <WhyChoose client:visible />

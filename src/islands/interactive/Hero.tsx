@@ -13,7 +13,7 @@ import type { Photo } from '@/lib/images';
 import { MotionRoot, Pic } from '../shared/Motion';
 import { ease } from '@/lib/motion/variants';
 
-const focusWords = ['Joints', 'Energy', 'Longevity', 'Recovery'];
+const focusWords = ['Joints', 'Energy', 'Hormones', 'Recovery'];
 
 const line = (children: React.ReactNode, delay: number) => (
   <span className="block overflow-hidden pb-[0.12em]">
@@ -49,7 +49,7 @@ function HeroInner({ banner }: { banner: Photo }) {
   // Soft light that follows the cursor.
   const gx = useMotionValue(0);
   const gy = useMotionValue(0);
-  const glow = useMotionTemplate`radial-gradient(520px circle at ${gx}px ${gy}px, rgba(255,255,255,0.5), transparent 65%)`;
+  const glow = useMotionTemplate`radial-gradient(520px circle at ${gx}px ${gy}px, rgba(255,255,255,0.14), transparent 65%)`;
 
   useEffect(() => {
     if (reduce) return;
@@ -80,10 +80,11 @@ function HeroInner({ banner }: { banner: Photo }) {
     <section
       id="top"
       ref={ref}
-      className="relative isolate overflow-hidden bg-ivory lg:h-[max(46vw,680px)]"
+      data-dark
+      className="relative isolate overflow-hidden bg-ink text-ivory lg:h-[max(48vw,720px)]"
     >
       {/* Photo: stacked on phones, full-width banner on large screens */}
-      <div className="relative h-[54svh] min-h-[380px] overflow-hidden bg-[#d9d6da] lg:absolute lg:inset-x-0 lg:top-0 lg:h-auto lg:min-h-0 lg:bg-transparent lg:[mask-image:linear-gradient(to_bottom,black_82%,transparent)]">
+      <div className="relative h-[54svh] min-h-[380px] overflow-hidden bg-ink lg:absolute lg:inset-x-0 lg:top-14 lg:h-auto lg:min-h-0 lg:bg-transparent lg:[mask-image:linear-gradient(to_bottom,transparent_0%,black_14%,black_82%,transparent)]">
         <motion.div
           className="h-full w-full lg:h-auto"
           style={{ x: imgX, y: imgY }}
@@ -98,7 +99,11 @@ function HeroInner({ banner }: { banner: Photo }) {
             className="h-full w-full object-cover object-[12%_30%] lg:h-auto lg:object-left-top"
           />
         </motion.div>
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ivory to-transparent lg:hidden" />
+        {/* Luxury tint: deep navy wash, warm gold light and a soft vignette */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(100deg,rgba(10,26,47,0.28)_0%,rgba(14,39,71,0.42)_45%,rgba(10,26,47,0.88)_100%)]" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_80%_at_38%_45%,rgba(253,113,19,0.22),transparent_70%)] mix-blend-soft-light" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 shadow-[inset_0_0_160px_rgba(5,12,24,0.55)]" />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink to-transparent lg:hidden" />
         <motion.div className="pointer-events-none absolute inset-0 hidden lg:block" style={{ background: glow }} />
       </div>
 
@@ -109,10 +114,10 @@ function HeroInner({ banner }: { banner: Photo }) {
         style={{ x: orbX, y: orbY }}
       />
 
-      <div className="container-x pb-14 pt-2 lg:absolute lg:inset-y-0 lg:right-[5vw] lg:flex lg:w-[34vw] lg:max-w-[32rem] lg:items-center lg:p-0">
+      <div className="container-x pb-14 pt-2 lg:absolute lg:inset-y-0 lg:right-[4vw] lg:flex lg:w-[31vw] lg:max-w-[32rem] lg:items-center lg:p-0">
         <motion.div className="w-full" style={{ x: textX, y: textY }}>
           <motion.p
-            className="eyebrow"
+            className="eyebrow eyebrow-dark"
             initial={{ opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, ease, delay: 0.4 }}
@@ -120,18 +125,18 @@ function HeroInner({ banner }: { banner: Photo }) {
             Regenerative Medicine · Florida
           </motion.p>
 
-          <h1 className="mt-6 text-[clamp(2.4rem,9.5vw,3.5rem)] text-ink lg:text-[clamp(2rem,3.9vw,4.5rem)]">
+          <h1 className="mt-6 text-[clamp(2.4rem,9.5vw,3.5rem)] text-ivory lg:text-[clamp(2rem,3.9vw,4.5rem)]">
             {line('Have the body', 0.55)}
             {line(
               <>
-                <em className="text-gold-deep">heal</em> the body.
+                <em className="text-gold">heal</em> the body.
               </>,
               0.7,
             )}
           </h1>
 
           <motion.p
-            className="mt-6 max-w-md text-[1.02rem] leading-relaxed text-slate lg:mt-5 lg:text-[0.98rem] xl:text-lg"
+            className="mt-6 max-w-md text-[1.02rem] leading-relaxed text-mist lg:mt-5 lg:text-[0.98rem] xl:text-lg"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease, delay: 1.05 }}
@@ -140,14 +145,14 @@ function HeroInner({ banner }: { banner: Photo }) {
           </motion.p>
 
           <motion.div
-            className="mt-5 flex items-center gap-3 whitespace-nowrap text-xs font-semibold uppercase tracking-[0.16em] text-ink/80 sm:text-sm"
+            className="mt-5 flex items-center gap-3 whitespace-nowrap text-xs font-semibold uppercase tracking-[0.16em] text-ivory/80 sm:text-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.25 }}
             aria-live="off"
           >
             <span>Personalized care for</span>
-            <span className="relative inline-block h-6 w-32 overflow-hidden text-gold-deep">
+            <span className="relative inline-block h-6 w-32 overflow-hidden text-gold">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={word}
@@ -169,12 +174,12 @@ function HeroInner({ banner }: { banner: Photo }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease, delay: 1.4 }}
           >
-            <a href="#contact" className="btn btn-primary">
+            <a href="/#contact" className="btn btn-gold">
               Book a Consultation
             </a>
             <a
-              href="#care"
-              className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.16em] text-ink"
+              href="/#care"
+              className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.16em] text-ivory hover:text-gold"
             >
               Explore treatments
               <ArrowRight
@@ -187,7 +192,7 @@ function HeroInner({ banner }: { banner: Photo }) {
         </motion.div>
       </div>
 
-      {/* Quiet details at the edges */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
     </section>
   );
 }

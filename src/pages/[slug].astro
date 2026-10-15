@@ -1,0 +1,11 @@
+---
+import TreatmentRoute from '../components/TreatmentRoute.astro';
+import { treatments } from '../data/treatments';
+
+export function getStaticPaths() {
+  return treatments.filter((t) => t.slug !== 'hormone-therapy').map((t) => ({ params: { slug: t.slug } }));
+}
+const { slug } = Astro.params;
+---
+
+<TreatmentRoute slug={slug as string} />

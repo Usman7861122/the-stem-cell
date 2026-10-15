@@ -37,7 +37,7 @@ function IntroVideo() {
       <video
         ref={video}
         className="h-full w-full object-cover"
-        poster="/videos/about-intro-poster.webp"
+        poster="/videos/about-intro-v2-poster.webp"
         muted
         playsInline
         preload="metadata"
@@ -46,7 +46,7 @@ function IntroVideo() {
         onEnded={() => setState('ended')}
         aria-label="Animated stem cells, ending with The Stem Cell Institute logo and tagline"
       >
-        <source src="/videos/about-intro.mp4" type="video/mp4" />
+        <source src="/videos/about-intro-v2.mp4" type="video/mp4" />
       </video>
       <button
         type="button"
@@ -104,7 +104,7 @@ export default function About() {
                   </li>
                 ))}
               </ul>
-              <a href="#why" className="btn btn-primary mt-10">
+              <a href="/#why" className="btn btn-primary mt-10">
                 Why patients choose us
               </a>
             </Reveal>

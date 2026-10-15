@@ -22,7 +22,7 @@ export default function Physician({ photo }: { photo: Photo }) {
             </Reveal>
             <Reveal delay={0.15}>
               <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-                <a href="#contact" className="btn btn-gold">
+                <a href="/#contact" className="btn btn-gold">
                   Book a Consultation
                 </a>
                 <a

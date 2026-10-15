@@ -8,9 +8,10 @@ import { site, locations } from '../data/content';
 interface Props {
   title: string;
   description: string;
+  extraJsonLd?: Record<string, unknown>[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, extraJsonLd = [] } = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 
 const jsonLd = {
@@ -55,6 +56,7 @@ const jsonLd = {
     <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {extraJsonLd.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
   </head>
   <body>
     <a

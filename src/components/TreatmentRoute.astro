@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from './layout/Footer.astro';
+import { getPhotos, type Photo } from '../lib/images';
+import { locations, site } from '../data/content';
+import { getTreatment } from '../data/treatments';
+import Header from '../islands/interactive/Header';
+import TreatmentPage from '../islands/interactive/TreatmentPage';
+import Contact from '../islands/interactive/Contact';
+
+const { slug } = Astro.props as { slug: string };
+const t = getTreatment(slug);
+const p = (await getPhotos()) as unknown as Record<string, Photo> & { logo: Photo; reception: Photo };
+const url = new URL(t.href, site.url).href;
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', site.url).href },
+    { '@type': 'ListItem', position: 2, name: 'Treatments', item: new URL('/#care', site.url).href },
+    { '@type': 'ListItem', position: 3, name: t.name, item: url },
+  ],
+};
+const faq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: t.faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+const service = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: t.title,
+  url,
+  description: t.metaDescription,
+  about: { '@type': 'MedicalTherapy', name: t.therapyName },
+  provider: {
+    '@type': 'MedicalBusiness',
+    name: site.name,
+    telephone: site.phone,
+    areaServed: locations.map((l) => ({ '@type': 'City', name: l.city })),
+  },
+};
+const k = t.photoKeys;
+---
+
+<BaseLayout title={t.metaTitle} description={t.metaDescription} extraJsonLd={[breadcrumbs, faq, service]}>
+  <Header client:load logo={p.logo} logoLight={p.logoLight} />
+  <main id="main">
+    <TreatmentPage
+      client:load
+      t={t}
+      hero={p[k.hero] ?? p.hormoneHero}
+      process={p[k.process] ?? p.hormoneLab}
+      why={p[k.why] ?? p.hormoneActive}
+      local={p[k.local ?? k.hero] ?? p.hormoneLocal}
+    />
+    <Contact client:visible photo={p.reception} />
+  </main>
+  <Footer />
+</BaseLayout>

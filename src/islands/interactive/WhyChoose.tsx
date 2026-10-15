@@ -51,7 +51,7 @@ export default function WhyChoose() {
             <p className="mt-6 text-lg leading-relaxed text-mist">
               Care that is calm, clear and built for one person: you.
             </p>
-            <a href="#contact" className="btn btn-gold mt-10">
+            <a href="/#contact" className="btn btn-gold mt-10">
               Book a Consultation
             </a>
           </Reveal>

@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/layout/Footer.astro';
+import { getPhotos } from '../../lib/images';
+import { locations, site } from '../../data/content';
+import Header from '../../islands/interactive/Header';
+import LocationDetail from '../../islands/interactive/LocationDetail';
+import Contact from '../../islands/interactive/Contact';
+
+export function getStaticPaths() {
+  return locations.map((l) => ({ params: { slug: l.id } }));
+}
+const { slug } = Astro.params;
+const l = locations.find((x) => x.id === slug)!;
+const p = await getPhotos();
+const url = new URL(`/locations/${l.id}`, site.url).href;
+const heroKey = l.id === 'sarasota' ? 'consultation' : 'reception';
+const title = `${site.name} in ${l.city}, FL | Address, Hours & Treatments`;
+const description = `Visit The Stem Cell Institute at ${l.full}. See working hours, directions, phone number and the treatments we offer in ${l.city}, Florida.`;
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', site.url).href },
+    { '@type': 'ListItem', position: 2, name: 'Locations', item: new URL('/locations', site.url).href },
+    { '@type': 'ListItem', position: 3, name: l.name, item: url },
+  ],
+};
+const clinic = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: `${site.name} – ${l.name}`,
+  url,
+  telephone: site.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: l.street,
+    addressLocality: l.city,
+    addressRegion: 'FL',
+    postalCode: l.zip,
+    addressCountry: 'US',
+  },
+  areaServed: l.nearby.map((n) => ({ '@type': 'City', name: n })),
+  openingHoursSpecification: l.hours
+    .filter((h) => h.open && h.close)
+    .map((h) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.day, opens: h.open, closes: h.close })),
+};
+const faq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: l.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+
+<BaseLayout title={title} description={description} extraJsonLd={[breadcrumbs, clinic, faq]}>
+  <Header client:load logo={p.logo} logoLight={p.logoLight} />
+  <main id="main">
+    <LocationDetail client:load slug={l.id} hero={(p as any)[heroKey]} />
+    <Contact client:visible photo={p.reception} />
+  </main>
+  <Footer />
+</BaseLayout>
