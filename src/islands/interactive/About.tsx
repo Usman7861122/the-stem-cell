@@ -5,7 +5,7 @@ import { MotionRoot, Reveal } from '../shared/Motion';
 
 const values = ['Physician-led care', 'Root-cause approach', 'Ongoing medical support'];
 
-/** 16:9 branded video. Plays once when scrolled into view and stops on the logo end card. */
+/** 4:5 branded video. Plays once when scrolled into view and stops on the logo end card. */
 function IntroVideo() {
   const wrap = useRef<HTMLDivElement>(null);
   const video = useRef<HTMLVideoElement>(null);
@@ -32,12 +32,12 @@ function IntroVideo() {
   return (
     <div
       ref={wrap}
-      className="relative mx-auto aspect-video w-full overflow-hidden rounded-2xl bg-navy shadow-[0_40px_80px_-40px_rgba(14,39,71,0.6)] "
+      className="relative mx-auto aspect-[4/5] w-full max-w-[34rem] overflow-hidden rounded-2xl bg-navy shadow-[0_40px_80px_-40px_rgba(14,39,71,0.6)] lg:max-w-none"
     >
       <video
         ref={video}
         className="h-full w-full object-cover"
-        poster="/videos/about-intro-v4-poster.webp"
+        poster="/videos/about-intro-v2-poster.webp"
         muted
         playsInline
         preload="metadata"
@@ -46,7 +46,7 @@ function IntroVideo() {
         onEnded={() => setState('ended')}
         aria-label="Animated stem cells, ending with The Stem Cell Institute logo and tagline"
       >
-        <source src="/videos/about-intro-v4.mp4" type="video/mp4" />
+        <source src="/videos/about-intro-v2.mp4" type="video/mp4" />
       </video>
       <button
         type="button"
@@ -70,7 +70,7 @@ export default function About() {
   return (
     <MotionRoot>
       <section id="about" className="section-pad overflow-hidden bg-sand">
-        <div className="container-x grid items-center gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-20">
+        <div className="container-x grid items-center gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-20">
           <Reveal>
             <IntroVideo />
           </Reveal>
