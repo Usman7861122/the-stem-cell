@@ -288,10 +288,10 @@ export const footerLinks = {
 
 // Highlights band under the hero.
 // NOTE: the first item replaces "Largest wellness facility in Las Vegas" from the sample image,
-// because this institute is in Florida. Confirm the compounding pharmacy claim before launch.
+// because this institute is in Florida.
 export const highlights = [
   { icon: 'atom', text: 'Wellness clinics in Sarasota & Venice' },
-  { icon: 'pill', text: 'In-house compounding pharmacy' },
+  { icon: 'cell', text: 'Cutting-edge cellular & exosome therapy' },
   { icon: 'dna', text: 'Advanced peptide & regenerative protocols' },
   { icon: 'stethoscope', text: 'Physician-led precision care' },
 ] as const;
