@@ -1,10 +1,40 @@
-import { useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight, Check } from 'lucide-react';
 import { concerns, services } from '@/data/content';
 import type { Photo } from '@/lib/images';
 import { MotionRoot, Pic, Reveal } from '../shared/Motion';
 import { ease } from '@/lib/motion/variants';
+
+/** Swaps "built around you" and "built for you". Both phrases share one grid cell, so the heading never jumps. */
+function SwapPhrase() {
+  const reduce = useReducedMotion();
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (reduce) return;
+    const id = setInterval(() => setI((n) => (n + 1) % 2), 3200);
+    return () => clearInterval(id);
+  }, [reduce]);
+  const phrases = ['built around you', 'built for you'];
+  const shown = reduce ? 1 : i;
+  return (
+    <em className="inline-grid text-gold-deep">
+      <span className="sr-only">built for you</span>
+      {phrases.map((p, k) => (
+        <motion.span
+          key={p}
+          aria-hidden
+          className="col-start-1 row-start-1"
+          initial={false}
+          animate={{ opacity: shown === k ? 1 : 0, y: shown === k ? 0 : shown > k ? '-0.35em' : '0.35em', filter: shown === k ? 'blur(0px)' : 'blur(6px)' }}
+          transition={{ duration: 0.7, ease }}
+        >
+          {p}
+        </motion.span>
+      ))}
+    </em>
+  );
+}
 
 export default function Care({ photos }: { photos: Record<string, Photo> }) {
   const [active, setActive] = useState(0);
@@ -28,7 +58,7 @@ export default function Care({ photos }: { photos: Record<string, Photo> }) {
           <Reveal className="max-w-4xl">
             <p className="eyebrow">A New Generation of Personalized Care</p>
             <h2 className="h-section mt-5">
-              Modern medicine, <em className="text-gold-deep">built around you</em>
+              The Future of medicine, <SwapPhrase />
             </h2>
             <p className="lead mt-6">
               Six areas of care, one team. Every treatment starts with testing and a clear plan.

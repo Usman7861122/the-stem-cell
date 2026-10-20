@@ -20,8 +20,8 @@ export default function Pillars({ photos }: Props) {
               Real Science. Real Results. <em className="text-gold-deep">Personalized to You.</em>
             </h2>
             <p className="lead mt-6">
-              We pair advanced regenerative therapies with careful testing, so every plan stands on
-              evidence, and on you.
+              We pair advanced regenerative therapies customized to offer the quality of life that you
+              desire and deserve.
             </p>
           </Reveal>
 
