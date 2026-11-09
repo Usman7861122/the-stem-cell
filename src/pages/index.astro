@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/layout/Footer.astro';
+import ExploreLinks from '../components/layout/ExploreLinks.astro';
 import { getPhotos } from '../lib/images';
 
 import Header from '../islands/interactive/Header';
@@ -33,8 +34,8 @@ const galleryItems = [
 ---
 
 <BaseLayout
-  title="The Stem Cell Institute | Regenerative Medicine in Sarasota & Venice, FL"
-  description="Physician-led regenerative medicine in Sarasota and Venice, Florida. Stem cell therapy, exosome therapy, peptide therapy, hormone therapy, weight loss and IV therapy, built around you."
+  title="Regenerative Medicine in Sarasota, FL | Stem Cell Institute"
+  description="Physician-led regenerative medicine in Sarasota and Venice, FL. Explore stem cell, exosome, peptide and hormone therapy, weight loss and IV care. Book today."
 >
   <Header client:load logo={p.logo} logoLight={p.logoLight} />
   <main id="main">
@@ -64,6 +65,7 @@ const galleryItems = [
     <Testimonials client:visible />
     <Gallery client:visible items={galleryItems} />
     <Locations client:visible />
+    <ExploreLinks />
     <Contact client:visible photo={p.reception} />
   </main>
   <Footer />

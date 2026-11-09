@@ -1,0 +1,25 @@
+# The Stem Cell Institute
+
+> Physician-led regenerative medicine with clinics in Sarasota and Venice, Florida. This site is for general information and is not medical advice. Results vary and are not guaranteed.
+
+## Main pages
+- [Home](https://www.thestemcellinstitute.com/): Overview of care and both clinics
+- [About](https://www.thestemcellinstitute.com/about/): Our approach and physician-led care
+- [Locations](https://www.thestemcellinstitute.com/locations/): Addresses, hours and directions
+- [Contact](https://www.thestemcellinstitute.com/contact/): Request a consultation
+
+## Treatments
+- [Hormone therapy](https://www.thestemcellinstitute.com/hormone-therapy/)
+- [Stem cell therapy](https://www.thestemcellinstitute.com/stem-cell-therapy/)
+- [Exosome therapy](https://www.thestemcellinstitute.com/exosome-therapy/)
+- [Peptide therapy](https://www.thestemcellinstitute.com/peptide-therapy/)
+- [Medical weight loss](https://www.thestemcellinstitute.com/weight-loss/)
+- [IV therapy](https://www.thestemcellinstitute.com/iv-therapy/)
+- [Rebuilding Brains](https://www.thestemcellinstitute.com/rebuilding-brains/): Memory and brain health program by William J. Cole Jr., D.O.
+
+## Clinics
+- [Sarasota](https://www.thestemcellinstitute.com/locations/sarasota/): 4071 Bee Ridge Rd., Suite #101, Sarasota, FL 34233
+- [Venice](https://www.thestemcellinstitute.com/locations/venice/): 389 Commercial Ct, Venice, FL 34292
+
+## Contact
+- Phone: (941) 371-7171

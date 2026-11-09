@@ -18,8 +18,8 @@ export default function Testimonials() {
             <p className="eyebrow">Patient Stories</p>
             <h2 className="h-section mt-5">What our patients are saying</h2>
             <p className="lead mt-6">
-              Real stories. Real results. See how our patients transformed their health with
-              personalized care.
+              Real stories from our patients, shared with permission. Every person is different,
+              and results vary.
             </p>
           </Reveal>
 

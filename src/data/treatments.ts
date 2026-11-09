@@ -72,12 +72,12 @@ const hormoneT: Treatment = {
 
 const stem: Treatment = {
   slug: 'stem-cell-therapy',
-  href: '/stem-cell-therapy',
+  href: '/stem-cell-therapy/',
   name: 'Stem Cell Therapy',
   title: 'Stem Cell Therapy in Sarasota & Venice, FL',
-  metaTitle: 'Stem Cell Therapy in Sarasota & Venice, FL | The Stem Cell Institute',
+  metaTitle: 'Stem Cell Therapy in Sarasota & Venice | Stem Cell Institute',
   metaDescription:
-    'Physician-led stem cell therapy for joint pain and recovery in Sarasota and Venice, Florida. Ultrasound-guided, non-surgical options explained clearly at The Stem Cell Institute. Book a consultation.',
+    'Physician-led stem cell therapy for joint pain and recovery in Sarasota and Venice, FL. Ultrasound-guided, non-surgical options. Book a consultation today.',
   therapyName: 'Stem cell therapy',
   heroLead:
     'Living with joint pain or a slow recovery? Our physicians look at the cause first, then talk with you about non-surgical regenerative options and whether they fit your goals.',
@@ -141,12 +141,12 @@ const stem: Treatment = {
 
 const exosome: Treatment = {
   slug: 'exosome-therapy',
-  href: '/exosome-therapy',
+  href: '/exosome-therapy/',
   name: 'Exosome Therapy',
   title: 'Exosome Therapy in Sarasota & Venice, FL',
-  metaTitle: 'Exosome Therapy in Sarasota & Venice, FL | The Stem Cell Institute',
+  metaTitle: 'Exosome Therapy in Sarasota & Venice | Stem Cell Institute',
   metaDescription:
-    'Physician-led exosome therapy in Sarasota and Venice, Florida. Learn how exosomes may support recovery and renewal, and who may be a candidate. Book a consultation at The Stem Cell Institute.',
+    'Physician-led exosome therapy in Sarasota and Venice, FL. Learn how exosomes may support recovery and who may be a candidate. Book a consultation today.',
   therapyName: 'Exosome therapy',
   heroLead:
     'Curious about exosomes? Our physicians explain what they are, what the research shows so far, and whether this newer regenerative option may fit your goals.',
@@ -167,7 +167,7 @@ const exosome: Treatment = {
     'Looking for a non-surgical option',
     'Interest in newer regenerative care',
     'Wanting to add to an existing plan',
-    'Questions about what is safe and proven',
+    'Questions about safety and the evidence',
   ],
   signsNote: 'Exosome care is still evolving. A medical evaluation tells us whether it makes sense for you.',
   groupsEyebrow: 'Where it fits',
@@ -210,12 +210,12 @@ const exosome: Treatment = {
 
 const peptide: Treatment = {
   slug: 'peptide-therapy',
-  href: '/peptide-therapy',
+  href: '/peptide-therapy/',
   name: 'Peptide Therapy',
   title: 'Peptide Therapy in Sarasota & Venice, FL',
-  metaTitle: 'Peptide Therapy in Sarasota & Venice, FL | The Stem Cell Institute',
+  metaTitle: 'Peptide Therapy in Sarasota & Venice | Stem Cell Institute',
   metaDescription:
-    'Physician-guided peptide therapy in Sarasota and Venice, Florida. Personalized plans for recovery, energy and wellness, with clear guidance and follow-up. Book a consultation at The Stem Cell Institute.',
+    'Physician-guided peptide therapy in Sarasota and Venice, FL. Personalized plans for recovery, energy and wellness, with follow-up. Book a consultation today.',
   therapyName: 'Peptide therapy',
   heroLead:
     'Want to recover faster and feel better day to day? Our physicians explain how peptide therapy works and build a plan around your goals, your health history and your labs.',
@@ -279,12 +279,12 @@ const peptide: Treatment = {
 
 const weight: Treatment = {
   slug: 'weight-loss',
-  href: '/weight-loss',
+  href: '/weight-loss/',
   name: 'Weight Loss',
   title: 'Medical Weight Loss in Sarasota & Venice, FL',
-  metaTitle: 'Medical Weight Loss in Sarasota & Venice, FL | The Stem Cell Institute',
+  metaTitle: 'Medical Weight Loss, Sarasota & Venice | Stem Cell Institute',
   metaDescription:
-    'Physician-supervised medical weight loss in Sarasota and Venice, Florida. Lab-guided, personalized plans with real follow-up at The Stem Cell Institute. Book a consultation.',
+    'Physician-supervised medical weight loss in Sarasota and Venice, FL. Lab-guided, personal plans with real follow-up. Book a consultation to get started.',
   therapyName: 'Medical weight loss',
   heroLead:
     'Tired of diets that do not last? Our physicians look at your metabolism, your hormones and your labs, then build a weight loss plan that fits your life.',
@@ -348,12 +348,12 @@ const weight: Treatment = {
 
 const iv: Treatment = {
   slug: 'iv-therapy',
-  href: '/iv-therapy',
+  href: '/iv-therapy/',
   name: 'IV Therapy',
   title: 'IV Therapy in Sarasota & Venice, FL',
-  metaTitle: 'IV Therapy in Sarasota & Venice, FL | The Stem Cell Institute',
+  metaTitle: 'IV Therapy in Sarasota & Venice | Stem Cell Institute',
   metaDescription:
-    'Physician-supervised IV therapy in Sarasota and Venice, Florida. Hydration, vitamins and minerals in a calm clinic setting at The Stem Cell Institute. Book a visit.',
+    'Physician-supervised IV therapy in Sarasota and Venice, FL. Hydration, vitamins and minerals in a calm clinic. Call (941) 371-7171 or book a visit today.',
   therapyName: 'IV therapy',
   heroLead:
     'Need a boost? IV therapy delivers fluids, vitamins and minerals straight into your bloodstream, in a calm, clean clinic with a care team beside you.',

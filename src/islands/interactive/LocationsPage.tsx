@@ -213,7 +213,7 @@ export default function LocationsPage({ hero }: Props) {
                       </a>
                     </div>
                     <a
-                      href={`/locations/${l.id}`}
+                      href={`/locations/${l.id}/`}
                       className="mt-5 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.16em] text-ink hover:text-gold-deep"
                     >
                       View {l.name} clinic details <ArrowRight size={16} aria-hidden />

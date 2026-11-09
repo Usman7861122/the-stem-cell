@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Footer from '../../components/layout/Footer.astro';
 import { getPhotos } from '../../lib/images';
+import { clinicSchema } from '../../lib/schema';
 import { locations, site } from '../../data/content';
 import Header from '../../islands/interactive/Header';
 import LocationDetail from '../../islands/interactive/LocationDetail';
@@ -15,8 +16,9 @@ const l = locations.find((x) => x.id === slug)!;
 const p = await getPhotos();
 const url = new URL(`/locations/${l.id}/`, site.url).href;
 const heroKey = l.id === 'sarasota' ? 'consultation' : 'reception';
-const title = `${site.name} in ${l.city}, FL | Address, Hours & Treatments`;
-const description = `Visit The Stem Cell Institute at ${l.full}. See working hours, directions, phone number and the treatments we offer in ${l.city}, Florida.`;
+const title = `${l.city}, FL Clinic: Address & Hours | Stem Cell Institute`;
+const shortStreet = l.street.split(',')[0];
+const description = `Visit our ${l.city} clinic at ${shortStreet}${shortStreet.endsWith('.') ? '' : '.'} See hours, directions and treatments, including stem cell and hormone therapy. Call ${site.phone} to book.`;
 
 const breadcrumbs = {
   '@context': 'https://schema.org',
@@ -27,25 +29,7 @@ const breadcrumbs = {
     { '@type': 'ListItem', position: 3, name: l.name, item: url },
   ],
 };
-const clinic = {
-  '@context': 'https://schema.org',
-  '@type': 'MedicalBusiness',
-  name: `${site.name} – ${l.name}`,
-  url,
-  telephone: site.phone,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: l.street,
-    addressLocality: l.city,
-    addressRegion: 'FL',
-    postalCode: l.zip,
-    addressCountry: 'US',
-  },
-  areaServed: l.nearby.map((n) => ({ '@type': 'City', name: n })),
-  openingHoursSpecification: l.hours
-    .filter((h) => h.open && h.close)
-    .map((h) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.day, opens: h.open, closes: h.close })),
-};
+const clinic = clinicSchema(l, url);
 const faq = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',

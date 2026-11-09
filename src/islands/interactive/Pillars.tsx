@@ -15,9 +15,9 @@ export default function Pillars({ photos }: Props) {
       <section id="pillars" className="section-pad">
         <div className="container-x">
           <Reveal className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow">Our Promise</p>
+            <p className="eyebrow">Our Approach</p>
             <h2 className="h-section mt-5">
-              Real Science. Real Results. <em className="text-gold-deep">Personalized to You.</em>
+              Real Science. Real Follow-Up. <em className="text-gold-deep">Personalized to You.</em>
             </h2>
             <p className="lead mt-6">
               We pair advanced regenerative therapies customized to offer the quality of life that you

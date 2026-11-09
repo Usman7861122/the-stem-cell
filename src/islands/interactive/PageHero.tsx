@@ -41,7 +41,7 @@ export default function PageHero({ crumb, eyebrow, title, lead, showContact }: P
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-mist sm:text-lg">{lead}</p>
             {!showContact && (
               <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-                <a href="/contact" className="btn btn-gold">
+                <a href="/contact/" className="btn btn-gold">
                   Book a Consultation
                 </a>
                 <a href={site.phoneHref} className="inline-flex min-h-11 items-center gap-2 font-semibold hover:text-gold">
@@ -68,7 +68,7 @@ export default function PageHero({ crumb, eyebrow, title, lead, showContact }: P
                 {locations.map((l) => (
                   <li key={l.id}>
                     <a
-                      href={`/locations/${l.id}`}
+                      href={`/locations/${l.id}/`}
                       className="flex h-full items-start gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 transition-colors hover:border-gold/60"
                     >
                       <MapPin size={22} className="mt-1 shrink-0 text-gold" aria-hidden />

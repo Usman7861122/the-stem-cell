@@ -54,7 +54,7 @@ const year = new Date().getFullYear();
           {
             locations.map((l) => (
               <li>
-                <strong class="block font-semibold text-ivory">{l.name}</strong>
+                <a href={`/locations/${l.id}/`} class="block font-semibold text-ivory transition-colors hover:text-gold">{l.name} Clinic</a>
                 {l.street}
                 <br />
                 {l.city}, FL {l.zip}

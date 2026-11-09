@@ -19,6 +19,9 @@ export default function Physician({ photo }: { photo: Photo }) {
                 experienced physician. We take time to understand your story, explain your options in
                 plain words, and stay with you at every step.
               </p>
+              <p className="mt-6 text-ivory">
+                Physician: <strong className="font-semibold">William J. Cole Jr., D.O.</strong>
+              </p>
             </Reveal>
             <Reveal delay={0.15}>
               <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">

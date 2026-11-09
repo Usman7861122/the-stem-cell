@@ -20,18 +20,18 @@ function Underline({ light = false }: { light?: boolean }) {
 }
 
 const icons: Record<string, LucideIcon> = {
-  '/hormone-therapy': Activity,
-  '/stem-cell-therapy': Dna,
-  '/exosome-therapy': Sparkles,
-  '/peptide-therapy': FlaskConical,
-  '/weight-loss': Scale,
-  '/iv-therapy': Droplets,
-  '/rebuilding-brains': Brain,
+  '/hormone-therapy/': Activity,
+  '/stem-cell-therapy/': Dna,
+  '/exosome-therapy/': Sparkles,
+  '/peptide-therapy/': FlaskConical,
+  '/weight-loss/': Scale,
+  '/iv-therapy/': Droplets,
+  '/rebuilding-brains/': Brain,
   '/#path': Compass,
   '/#gallery': Images,
-  '/locations': MapPinned,
-  '/locations/sarasota': MapPin,
-  '/locations/venice': MapPin,
+  '/locations/': MapPinned,
+  '/locations/sarasota/': MapPin,
+  '/locations/venice/': MapPin,
 };
 
 /** Desktop mega menu: opens on hover, focus or click; Escape closes. */
@@ -113,7 +113,7 @@ function DropdownItem({ item, onToggle, light }: { item: NavItem; onToggle: (v: 
                     </p>
                   </div>
                   <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
-                    <a href="/contact" onClick={() => set(false)} className="btn btn-gold !min-h-11 !px-6">
+                    <a href="/contact/" onClick={() => set(false)} className="btn btn-gold !min-h-11 !px-6">
                       Book a Consultation
                     </a>
                     <a href={site.phoneHref} className="inline-flex items-center gap-2 text-sm font-semibold hover:text-gold">
@@ -201,7 +201,7 @@ export default function Header({ logo, logoLight }: { logo: Photo; logoLight?: P
             >
               <Phone size={16} aria-hidden /> {site.phone}
             </a>
-            <a href="/contact" className={`btn ${light ? 'btn-gold' : 'btn-primary'} hidden !min-h-11 !px-6 whitespace-nowrap sm:inline-flex`}>
+            <a href="/contact/" className={`btn ${light ? 'btn-gold' : 'btn-primary'} hidden !min-h-11 !px-6 whitespace-nowrap sm:inline-flex`}>
               Book a Consultation
             </a>
             <button

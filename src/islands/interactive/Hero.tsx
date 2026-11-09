@@ -88,13 +88,13 @@ function HeroInner({ banner }: { banner: Photo }) {
         <motion.div
           className="h-full w-full lg:h-auto"
           style={{ x: imgX, y: imgY }}
-          initial={{ scale: 1.14, opacity: 0 }}
+          initial={{ scale: 1.14, opacity: 1 }}
           animate={{ scale: 1.04, opacity: 1 }}
           transition={{ duration: 2.2, ease }}
         >
           <Pic
             photo={banner}
-            sizes="(min-width: 1024px) 100vw, 1100px"
+            sizes="100vw"
             eager
             className="h-full w-full object-cover object-[12%_30%] lg:h-auto lg:object-left-top"
           />

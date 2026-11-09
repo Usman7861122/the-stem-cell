@@ -16,7 +16,7 @@ function Breadcrumbs({ name }: { name: string }) {
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-mist">
         {[
           { label: 'Home', href: '/' },
-          { label: 'Locations', href: '/locations' },
+          { label: 'Locations', href: '/locations/' },
           { label: name, href: null as string | null },
         ].map((it, i, arr) => (
           <li key={it.label} className="flex items-center gap-2">
@@ -214,7 +214,7 @@ export default function LocationDetail({ slug, hero }: Props) {
               Our {other.name} clinic is at {other.full}.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-              <a href={`/locations/${other.id}`} className="btn btn-gold">
+              <a href={`/locations/${other.id}/`} className="btn btn-gold">
                 View the {other.name} clinic
               </a>
               <a href="/#contact" className="inline-flex items-center gap-2 font-semibold hover:text-gold">

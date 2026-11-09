@@ -52,6 +52,7 @@ export function Pic({
       height={photo.height}
       alt={photo.alt}
       loading={eager ? 'eager' : 'lazy'}
+      fetchPriority={eager ? 'high' : undefined}
       decoding="async"
       className={className}
       style={style}

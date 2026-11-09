@@ -85,8 +85,8 @@ export default function About() {
             <Reveal delay={0.1}>
               <p className="lead mt-7">
                 The Stem Cell Institute is a wellness center offering physician-led regenerative
-                therapies and advanced stem cell treatments. Our goal is simple: help your body do
-                what it was designed to do, to heal, restore and renew.
+                therapies and advanced stem cell treatments. Our goal is simple: support your
+                body's own natural healing and renewal.
               </p>
               <p className="lead mt-5">
                 We take the time to listen, test and explain. Then we build a plan that fits your

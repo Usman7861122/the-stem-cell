@@ -284,7 +284,10 @@ export default function TreatmentPage({ t, hero, process, why, local }: Props) {
             <a href="/#contact" className="btn btn-gold">
               {t.ctaLabel}
             </a>
-            <p className="mx-auto mt-8 max-w-2xl text-sm text-mist">
+            <p className="mx-auto mt-8 max-w-2xl text-sm text-ivory/80">
+              Medically reviewed by <strong className="font-semibold text-ivory">William J. Cole Jr., D.O.</strong>
+            </p>
+            <p className="mx-auto mt-3 max-w-2xl text-sm text-mist">
               This page is for general information and is not medical advice. Treatment is directed
               by a licensed physician after an evaluation. Results vary and are not guaranteed.
             </p>

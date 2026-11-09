@@ -14,38 +14,38 @@ export const site = {
 export type NavItem = { label: string; href: string; children?: { label: string; href: string; desc?: string }[] };
 
 export const nav: NavItem[] = [
-  { label: 'About', href: '/about' },
+  { label: 'About', href: '/about/' },
   {
     label: 'Treatments',
     href: '/#care',
     children: [
-      { label: 'Hormone Therapy', href: '/hormone-therapy', desc: 'Lab-guided balance for men and women' },
-      { label: 'Stem Cell Therapy', href: '/stem-cell-therapy', desc: 'Regenerative care for joints and recovery' },
-      { label: 'Exosome Therapy', href: '/exosome-therapy', desc: 'Newer cell-signal care, explained simply' },
-      { label: 'Peptide Therapy', href: '/peptide-therapy', desc: 'Targeted support for energy and recovery' },
-      { label: 'Weight Loss', href: '/weight-loss', desc: 'Physician-supervised, lab-guided plans' },
-      { label: 'IV Therapy', href: '/iv-therapy', desc: 'Hydration, vitamins and minerals' },
+      { label: 'Hormone Therapy', href: '/hormone-therapy/', desc: 'Lab-guided balance for men and women' },
+      { label: 'Stem Cell Therapy', href: '/stem-cell-therapy/', desc: 'Regenerative care for joints and recovery' },
+      { label: 'Exosome Therapy', href: '/exosome-therapy/', desc: 'Newer cell-signal care, explained simply' },
+      { label: 'Peptide Therapy', href: '/peptide-therapy/', desc: 'Targeted support for energy and recovery' },
+      { label: 'Weight Loss', href: '/weight-loss/', desc: 'Physician-supervised, lab-guided plans' },
+      { label: 'IV Therapy', href: '/iv-therapy/', desc: 'Hydration, vitamins and minerals' },
     ],
   },
   {
     label: 'Resources',
-    href: '/rebuilding-brains',
+    href: '/rebuilding-brains/',
     children: [
-      { label: 'Rebuilding Brains', href: '/rebuilding-brains', desc: 'Our approach to memory and brain health' },
+      { label: 'Rebuilding Brains', href: '/rebuilding-brains/', desc: 'Our approach to memory and brain health' },
       { label: 'Our Approach', href: '/#path', desc: 'How we care for you, step by step' },
       { label: 'Gallery', href: '/#gallery', desc: 'A look inside our clinics' },
     ],
   },
   {
     label: 'Locations',
-    href: '/locations',
+    href: '/locations/',
     children: [
-      { label: 'All Locations', href: '/locations', desc: 'Both clinics, hours and directions' },
-      { label: 'Sarasota Clinic', href: '/locations/sarasota', desc: '4071 Bee Ridge Rd., Suite #101' },
-      { label: 'Venice Clinic', href: '/locations/venice', desc: '389 Commercial Ct' },
+      { label: 'All Locations', href: '/locations/', desc: 'Both clinics, hours and directions' },
+      { label: 'Sarasota Clinic', href: '/locations/sarasota/', desc: '4071 Bee Ridge Rd., Suite #101' },
+      { label: 'Venice Clinic', href: '/locations/venice/', desc: '389 Commercial Ct' },
     ],
   },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Contact', href: '/contact/' },
 ];
 
 export const clinicTz = 'America/New_York';
@@ -70,6 +70,9 @@ export const locations = [
     zip: '34233',
     intro: "Our Sarasota clinic offers physician-led regenerative and wellness care, with lab-guided plans and follow-up visits close to home.",
     nearby: ["Sarasota", "Siesta Key", "Gulf Gate", "Lakewood Ranch", "Osprey"],
+    // TODO: add the Google Business Profile link to sameAs and the map position to geo.
+    geo: undefined as { lat: number; lng: number } | undefined,
+    sameAs: [] as string[],
     faqs: [{"q": "Where is the Sarasota clinic?", "a": "The Stem Cell Institute Sarasota clinic is at 4071 Bee Ridge Rd., Suite #101, Sarasota, FL 34233. Call (941) 371-7171 for help with directions."}, {"q": "What are the working hours in Sarasota?", "a": "Please see the working hours on this page. They are shown in Eastern Time, and the current day is highlighted. Call us if you are not sure."}, {"q": "Which treatments can I get at the Sarasota clinic?", "a": "We offer hormone therapy, stem cell therapy, exosome therapy, peptide therapy, weight loss and IV therapy. Your physician will explain which options may suit you."}, {"q": "How do I book a visit in Sarasota?", "a": "Call (941) 371-7171 or request a consultation online. Our team will find a time that works for you."}],
   },
   {
@@ -80,6 +83,9 @@ export const locations = [
     zip: '34292',
     intro: "Our Venice clinic brings the same physician-led regenerative and wellness care to Venice and the communities around it.",
     nearby: ["Venice", "Nokomis", "Osprey", "North Port", "Englewood"],
+    // TODO: add the Google Business Profile link to sameAs and the map position to geo.
+    geo: undefined as { lat: number; lng: number } | undefined,
+    sameAs: [] as string[],
     faqs: [{"q": "Where is the Venice clinic?", "a": "The Stem Cell Institute Venice clinic is at 389 Commercial Ct, Venice, FL 34292. Call (941) 371-7171 for help with directions."}, {"q": "What are the working hours in Venice?", "a": "Please see the working hours on this page. They are shown in Eastern Time, and the current day is highlighted. Call us if you are not sure."}, {"q": "Which treatments can I get at the Venice clinic?", "a": "We offer hormone therapy, stem cell therapy, exosome therapy, peptide therapy, weight loss and IV therapy. Your physician will explain which options may suit you."}, {"q": "How do I book a visit in Venice?", "a": "Call (941) 371-7171 or request a consultation online. Our team will find a time that works for you."}],
   },
 ].map((l) => ({
@@ -97,7 +103,7 @@ export const pillars = [
   },
   {
     n: '02',
-    title: 'Real Results',
+    title: 'Real Follow-Up',
     text: 'We look for the root cause, not only the symptom, and we track your progress at every visit.',
     image: 'ultrasound',
   },
@@ -112,7 +118,7 @@ export const pillars = [
 export const services = [
   {
     id: 'hormone',
-    href: '/hormone-therapy',
+    href: '/hormone-therapy/',
     title: 'Hormone Therapy',
     blurb: 'Balanced hormones support energy, mood, sleep and recovery.',
     items: [
@@ -125,7 +131,7 @@ export const services = [
   },
   {
     id: 'stem-cell',
-    href: '/stem-cell-therapy',
+    href: '/stem-cell-therapy/',
     title: 'Stem Cell Therapy',
     blurb: "Regenerative care that supports your body's own repair systems.",
     items: [
@@ -138,7 +144,7 @@ export const services = [
   },
   {
     id: 'exosome',
-    href: '/exosome-therapy',
+    href: '/exosome-therapy/',
     title: 'Exosome Therapy',
     blurb: 'Cell-to-cell messengers that help signal your body to repair and renew.',
     items: [
@@ -151,7 +157,7 @@ export const services = [
   },
   {
     id: 'peptide',
-    href: '/peptide-therapy',
+    href: '/peptide-therapy/',
     title: 'Peptide Therapy',
     blurb: 'Targeted peptide protocols, chosen for you and guided by your labs.',
     items: [
@@ -164,7 +170,7 @@ export const services = [
   },
   {
     id: 'weight-loss',
-    href: '/weight-loss',
+    href: '/weight-loss/',
     title: 'Weight Loss',
     blurb: 'Medical weight loss that looks at the cause, not just the number on the scale.',
     items: [
@@ -177,7 +183,7 @@ export const services = [
   },
   {
     id: 'iv',
-    href: '/iv-therapy',
+    href: '/iv-therapy/',
     title: 'IV Therapy',
     blurb: 'Hydration and nutrients delivered straight to your bloodstream.',
     items: [
@@ -207,7 +213,7 @@ export const reasons = [
   },
   {
     title: 'Advanced, Science-Backed Treatments',
-    text: 'We use proven and emerging regenerative therapies, guided by evidence and careful testing.',
+    text: 'We use established and emerging regenerative therapies, guided by evidence and careful testing.',
     icon: 'flask',
   },
   {
@@ -269,20 +275,21 @@ export const testimonials = [
 
 export const footerLinks = {
   Explore: [
-    { label: 'About', href: '/about' },
+    { label: 'About', href: '/about/' },
+    { label: 'Rebuilding Brains™', href: '/rebuilding-brains/' },
     { label: 'Treatments', href: '/#care' },
     { label: 'Your Path to Wellness', href: '/#path' },
     { label: 'Gallery', href: '/#gallery' },
-    { label: 'Locations', href: '/locations' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Locations', href: '/locations/' },
+    { label: 'Contact', href: '/contact/' },
   ],
   Treatments: [
-    { label: 'Hormone Therapy', href: '/hormone-therapy' },
-    { label: 'Stem Cell Therapy', href: '/stem-cell-therapy' },
-    { label: 'Exosome Therapy', href: '/exosome-therapy' },
-    { label: 'Peptide Therapy', href: '/peptide-therapy' },
-    { label: 'Weight Loss', href: '/weight-loss' },
-    { label: 'IV Therapy', href: '/iv-therapy' },
+    { label: 'Hormone Therapy', href: '/hormone-therapy/' },
+    { label: 'Stem Cell Therapy', href: '/stem-cell-therapy/' },
+    { label: 'Exosome Therapy', href: '/exosome-therapy/' },
+    { label: 'Peptide Therapy', href: '/peptide-therapy/' },
+    { label: 'Weight Loss', href: '/weight-loss/' },
+    { label: 'IV Therapy', href: '/iv-therapy/' },
   ],
 };
 
@@ -298,7 +305,7 @@ export const highlights = [
 
 // ---------- Rebuilding Brains™ (from Dr. Cole's article) ----------
 export const brains = {
-  href: '/rebuilding-brains',
+  href: '/rebuilding-brains/',
   title: 'Rebuilding Brains™',
   tagline: 'Real hope for Alzheimer’s dementia patients and their families',
   byline: 'By William J. Cole Jr., D.O.',
@@ -356,11 +363,11 @@ export const brains = {
 // ---------- Hormone Therapy page (SEO page for Sarasota & Venice) ----------
 // NOTE: written for the website, not taken from a client document. Have the physician review all claims.
 export const hormone = {
-  href: '/hormone-therapy',
+  href: '/hormone-therapy/',
   title: 'Hormone Therapy in Sarasota & Venice, FL',
-  metaTitle: 'Hormone Therapy in Sarasota & Venice, FL | The Stem Cell Institute',
+  metaTitle: 'Hormone Therapy in Sarasota & Venice | Stem Cell Institute',
   metaDescription:
-    'Physician-led hormone therapy for men and women in Sarasota and Venice, Florida. Lab-guided plans, clear explanations and ongoing follow-up at The Stem Cell Institute. Book a consultation.',
+    'Physician-led hormone therapy for men and women in Sarasota and Venice, FL. Lab-guided plans with ongoing follow-up and clear advice. Book a visit today.',
   signs: [
     'Constant tiredness or low energy',
     'Trouble falling or staying asleep',

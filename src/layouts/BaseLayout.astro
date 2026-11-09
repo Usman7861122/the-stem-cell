@@ -3,6 +3,9 @@ import '@fontsource/dm-serif-display/400.css';
 import '@fontsource/dm-serif-display/400-italic.css';
 import '@fontsource-variable/manrope';
 import '../styles/global.css';
+import manropeLatin from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
+import dmSerifLatin from '@fontsource/dm-serif-display/files/dm-serif-display-latin-400-normal.woff2?url';
+import dmSerifLatinItalic from '@fontsource/dm-serif-display/files/dm-serif-display-latin-400-italic.woff2?url';
 import { site, locations } from '../data/content';
 
 interface Props {
@@ -60,6 +63,9 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0e2747" />
+    <link rel="preload" as="font" type="font/woff2" href={manropeLatin} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={dmSerifLatin} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={dmSerifLatinItalic} crossorigin />
     <meta name="google-site-verification" content="jlluD1N12Ls6cB69Mk6b8u0V4zj0B1hd3BM71dzuvPE" />
     {noindex ? <meta name="robots" content="noindex, follow" /> : <meta name="robots" content="index, follow, max-image-preview:large" />}
     {!noindex && <link rel="canonical" href={canonical} />}

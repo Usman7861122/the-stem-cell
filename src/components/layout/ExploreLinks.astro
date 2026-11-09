@@ -1,0 +1,58 @@
+---
+import { nav, locations } from '../../data/content';
+const treatments = nav.find((n) => n.label === 'Treatments')?.children ?? [];
+---
+
+<section aria-labelledby="explore-links" class="section-pad bg-ivory">
+  <div class="container-x">
+    <p class="eyebrow">Explore</p>
+    <h2 id="explore-links" class="h-section mt-5">Our treatments and clinics</h2>
+    <div class="mt-12 grid gap-12 md:grid-cols-2">
+      <nav aria-label="Treatments">
+        <h3 class="font-serif text-2xl">Treatments</h3>
+        <ul class="mt-6 space-y-4">
+          {
+            treatments.map((t) => (
+              <li>
+                <a href={t.href} class="font-semibold text-navy underline-offset-4 hover:text-gold-deep hover:underline">
+                  {t.label} in Sarasota &amp; Venice
+                </a>
+                {t.desc && <span class="block text-slate">{t.desc}</span>}
+              </li>
+            ))
+          }
+          <li>
+            <a href="/rebuilding-brains/" class="font-semibold text-navy underline-offset-4 hover:text-gold-deep hover:underline">
+              Rebuilding Brains: memory and brain health care
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav aria-label="Clinic locations">
+        <h3 class="font-serif text-2xl">Clinics</h3>
+        <ul class="mt-6 space-y-4">
+          {
+            locations.map((l) => (
+              <li>
+                <a href={`/locations/${l.id}/`} class="font-semibold text-navy underline-offset-4 hover:text-gold-deep hover:underline">
+                  {l.name} clinic: address and hours
+                </a>
+                <span class="block text-slate">{l.street}, {l.city}, FL {l.zip}</span>
+              </li>
+            ))
+          }
+          <li>
+            <a href="/locations/" class="font-semibold text-navy underline-offset-4 hover:text-gold-deep hover:underline">
+              All clinic locations
+            </a>
+          </li>
+          <li>
+            <a href="/about/" class="font-semibold text-navy underline-offset-4 hover:text-gold-deep hover:underline">
+              About The Stem Cell Institute
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</section>
