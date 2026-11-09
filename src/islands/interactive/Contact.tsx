@@ -41,8 +41,8 @@ export default function Contact({ photo }: { photo: Photo }) {
       if (ENDPOINT) {
         const res = await fetch(ENDPOINT, {
           method: 'POST',
-          headers: { Accept: 'application/json' },
-          body: data,
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(Object.fromEntries(data)),
         });
         if (!res.ok) throw new Error('Request failed');
       } else {
