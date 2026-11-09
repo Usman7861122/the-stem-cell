@@ -9,6 +9,7 @@ import { ease } from '@/lib/motion/variants';
 type Errors = Partial<Record<'name' | 'email' | 'phone', string>>;
 
 const ENDPOINT = import.meta.env.PUBLIC_FORM_ENDPOINT as string | undefined;
+const MIN_FILL_MS = 3000;
 
 const field =
   'mt-2 w-full rounded-xl border border-ink/20 bg-white px-4 text-base text-ink placeholder:text-slate/70 transition-colors focus:border-navy';
@@ -16,12 +17,14 @@ const field =
 export default function Contact({ photo }: { photo: Photo }) {
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+  // Time the form was shown. A real person needs a few seconds to fill it in.
+  const [shownAt, setShownAt] = useState(() => Date.now());
 
   async function onSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
-    if (data.get('company')) return; // honeypot
+    if (data.get('company') || data.get('website')) return; // honeypot fields: only bots fill these
 
     const next: Errors = {};
     const name = String(data.get('name') ?? '').trim();
@@ -38,11 +41,14 @@ export default function Contact({ photo }: { photo: Photo }) {
 
     setStatus('sending');
     try {
+      // Too fast to be a person? Wait a moment before sending.
+      const wait = MIN_FILL_MS - (Date.now() - shownAt);
+      if (wait > 0) await new Promise((r) => setTimeout(r, wait));
       if (ENDPOINT) {
         const res = await fetch(ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(Object.fromEntries(data)),
+          body: JSON.stringify({ ...Object.fromEntries(data), elapsed: Date.now() - shownAt }),
         });
         if (!res.ok) throw new Error('Request failed');
       } else {
@@ -124,7 +130,10 @@ export default function Contact({ photo }: { photo: Photo }) {
                     )}
                     <button
                       type="button"
-                      onClick={() => setStatus('idle')}
+                      onClick={() => {
+                        setShownAt(Date.now());
+                        setStatus('idle');
+                      }}
                       className="btn btn-outline mt-8 !text-ink"
                     >
                       Send another request
@@ -242,10 +251,18 @@ export default function Contact({ photo }: { photo: Photo }) {
                       </p>
                     </div>
 
-                    {/* Honeypot: hidden from people, bots fill it in */}
+                    {/* Honeypots: hidden from people, bots fill them in */}
                     <input
                       type="text"
                       name="company"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden
+                      className="absolute -left-[9999px] h-0 w-0 opacity-0"
+                    />
+                    <input
+                      type="text"
+                      name="website"
                       tabIndex={-1}
                       autoComplete="off"
                       aria-hidden
