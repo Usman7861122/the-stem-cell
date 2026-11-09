@@ -9,16 +9,32 @@ interface Props {
   title: string;
   description: string;
   extraJsonLd?: Record<string, unknown>[];
+  noindex?: boolean;
+  image?: string;
 }
 
-const { title, description, extraJsonLd = [] } = Astro.props;
-const canonical = new URL(Astro.url.pathname, site.url).href;
+const { title, description, extraJsonLd = [], noindex = false, image = '/images/og-image.jpg' } = Astro.props;
+// Pages are served as folders (/about/), so the canonical always ends with a slash.
+const path = Astro.url.pathname.replace(/\/?$/, '/');
+const canonical = new URL(path, site.url).href;
+const ogImage = new URL(image, site.url).href;
+const logo = new URL('/images/Logo.webp', site.url).href;
+
+const webSite = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: `${site.url}/`,
+};
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MedicalBusiness',
+  '@id': `${site.url}/#organization`,
   name: site.name,
-  url: site.url,
+  url: `${site.url}/`,
+  logo,
+  image: ogImage,
   telephone: site.phone,
   description,
   location: locations.map((l) => ({
@@ -44,18 +60,28 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0e2747" />
-    <link rel="canonical" href={canonical} />
+    {noindex ? <meta name="robots" content="noindex, follow" /> : <meta name="robots" content="index, follow, max-image-preview:large" />}
+    {!noindex && <link rel="canonical" href={canonical} />}
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <title>{title}</title>
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {path === '/' && <script type="application/ld+json" set:html={JSON.stringify(webSite)} />}
     {extraJsonLd.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
   </head>
   <body>

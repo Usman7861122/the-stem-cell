@@ -11,7 +11,7 @@ import Contact from '../islands/interactive/Contact';
 const { slug } = Astro.props as { slug: string };
 const t = getTreatment(slug);
 const p = (await getPhotos()) as unknown as Record<string, Photo> & { logo: Photo; reception: Photo };
-const url = new URL(t.href, site.url).href;
+const url = new URL(`${t.href}/`, site.url).href;
 
 const breadcrumbs = {
   '@context': 'https://schema.org',

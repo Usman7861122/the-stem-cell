@@ -13,7 +13,7 @@ import Locations from '../islands/interactive/Locations';
 import Contact from '../islands/interactive/Contact';
 
 const p = await getPhotos();
-const url = new URL('/about', site.url).href;
+const url = new URL('/about/', site.url).href;
 const breadcrumbs = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',

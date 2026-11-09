@@ -2,7 +2,7 @@
 
 export const site = {
   name: 'The Stem Cell Institute',
-  url: import.meta.env.PUBLIC_SITE_URL || 'http://localhost:4321',
+  url: (import.meta.env.PUBLIC_SITE_URL || 'https://www.thestemcellinstitute.com').replace(/\/+$/, ''),
   phone: '(941) 371-7171',
   phoneHref: 'tel:+19413717171',
   consultationPrice: '$89', // from the current site; confirm before launch
