@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/layout/Footer.astro';
+import MiracleSpa from '../components/MiracleSpa.astro';
 import ExploreLinks from '../components/layout/ExploreLinks.astro';
 import { getPhotos } from '../lib/images';
 
@@ -59,6 +60,7 @@ const galleryItems = [
         hormoneLab: p.hormoneLab,
       }}
     />
+    <MiracleSpa />
     <WhyChoose client:visible />
     <Path client:visible />
     <Physician client:visible photo={p.doctorPortrait} />

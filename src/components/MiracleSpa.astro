@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import { miracleDevices } from '../data/miracle';
+
+// Machine photos: drop files into src/assets/images/ named btl-<machine>.jpg (see `files` below).
+const found = import.meta.glob<{ default: ImageMetadata }>('../assets/images/btl-*.{jpg,jpeg,png,webp}', { eager: true });
+const files: Record<string, string> = {
+  emsculpt: 'btl-emsculpt-device',
+  emsella: 'btl-emsella-meet',
+  exomind: 'btl-exomind-treatment',
+  emvital: 'btl-emvital-device',
+};
+const lines: Record<string, string> = {
+  emsculpt: 'Muscle toning and strengthening',
+  emsella: 'Pelvic floor chair for bladder control',
+  exomind: 'Magnetic stimulation for depression',
+  emvital: 'Gentle heat for muscle and joint relief',
+};
+const imageFor = (slug: string) =>
+  Object.entries(found).find(([path]) => path.includes(`/${files[slug]}.`))?.[1].default;
+---
+
+<section id="miracle" aria-labelledby="miracle-title" data-dark class="section-pad bg-ink text-ivory">
+  <div class="container-x">
+    <h2 id="miracle-title" class="h-section text-center">
+      <em class="text-gold">MIRACLE</em> Medical Spa
+    </h2>
+    <ul class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7">
+      {
+        miracleDevices.map((d) => {
+          const img = imageFor(d.slug);
+          return (
+            <li class="list-none">
+              <a
+                href={d.href}
+                class="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/15 bg-white/5 transition duration-300 hover:-translate-y-1 hover:border-gold/60"
+              >
+                <div class="flex aspect-[4/3] items-center justify-center bg-ivory">
+                  {img ? (
+                    <Image
+                      src={img}
+                      alt={`${d.name} machine at MIRACLE Medical Spa`}
+                      width={640}
+                      loading="lazy"
+                      class="h-full w-full object-contain p-4 transition duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <span class="font-serif text-3xl text-navy/40">{d.name}</span>
+                  )}
+                </div>
+                <div class="flex flex-1 flex-col p-6">
+                  <h3 class="font-serif text-2xl">{d.name}</h3>
+                  <p class="mt-2 text-mist">{lines[d.slug]}</p>
+                  <span class="mt-auto pt-5 font-semibold text-gold">Learn more →</span>
+                </div>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</section>

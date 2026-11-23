@@ -1,14 +1,13 @@
 ---
 import { nav, locations } from '../../data/content';
 const treatments = nav.find((n) => n.label === 'Treatments')?.children ?? [];
-const miracle = nav.find((n) => n.label === 'MIRACLE Medical Spa')?.children ?? [];
 ---
 
 <section aria-labelledby="explore-links" class="section-pad bg-ivory">
   <div class="container-x">
     <p class="eyebrow">Explore</p>
     <h2 id="explore-links" class="h-section mt-5">Our treatments and clinics</h2>
-    <div class="mt-12 grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-12 grid gap-12 md:grid-cols-2">
       <nav aria-label="Treatments">
         <h3 class="font-serif text-2xl">Treatments</h3>
         <ul class="mt-6 space-y-4">
@@ -27,21 +26,6 @@ const miracle = nav.find((n) => n.label === 'MIRACLE Medical Spa')?.children ?? 
               Rebuilding Brains: memory and brain health care
             </a>
           </li>
-        </ul>
-      </nav>
-      <nav aria-label="MIRACLE Medical Spa">
-        <h3 class="font-serif text-2xl">MIRACLE Medical Spa</h3>
-        <ul class="mt-6 space-y-4">
-          {
-            miracle.map((m, i) => (
-              <li>
-                <a href={m.href} class="font-semibold text-navy underline-offset-4 hover:text-gold-deep hover:underline">
-                  {i === 0 ? 'All MIRACLE Medical Spa treatments' : `${m.label} in Sarasota & Venice`}
-                </a>
-                {m.desc && <span class="block text-slate">{m.desc}</span>}
-              </li>
-            ))
-          }
         </ul>
       </nav>
       <nav aria-label="Clinic locations">
