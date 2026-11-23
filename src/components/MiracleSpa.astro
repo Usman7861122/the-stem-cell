@@ -8,7 +8,7 @@ const files: Record<string, string> = {
   emsculpt: 'btl-emsculpt-device',
   emsella: 'btl-emsella-meet',
   exomind: 'btl-exomind-treatment',
-  emvital: 'btl-emvital-device',
+  emvital: 'btl-emvital-crop',
 };
 const lines: Record<string, string> = {
   emsculpt: 'Muscle toning and strengthening',
@@ -16,6 +16,8 @@ const lines: Record<string, string> = {
   exomind: 'Magnetic stimulation for depression',
   emvital: 'Gentle heat for muscle and joint relief',
 };
+// Background behind each photo so it blends in (BTL photos have a dark navy or white backdrop).
+const bgs: Record<string, string> = { emsculpt: '#010a33', emsella: '#010a33', exomind: '#010a33', emvital: '#ffffff' };
 const imageFor = (slug: string) =>
   Object.entries(found).find(([path]) => path.includes(`/${files[slug]}.`))?.[1].default;
 ---
@@ -25,7 +27,7 @@ const imageFor = (slug: string) =>
     <h2 id="miracle-title" class="h-section text-center">
       <em class="text-gold">MIRACLE</em> Medical Spa
     </h2>
-    <ul class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7">
+    <ul class="mt-12 grid gap-6 md:grid-cols-2 lg:gap-8">
       {
         miracleDevices.map((d) => {
           const img = imageFor(d.slug);
@@ -35,22 +37,22 @@ const imageFor = (slug: string) =>
                 href={d.href}
                 class="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/15 bg-white/5 transition duration-300 hover:-translate-y-1 hover:border-gold/60"
               >
-                <div class="flex aspect-[4/3] items-center justify-center bg-ivory">
+                <div class="flex aspect-[4/3] items-center justify-center overflow-hidden" style={`background:${bgs[d.slug]}`}>
                   {img ? (
                     <Image
                       src={img}
                       alt={`${d.name} machine at MIRACLE Medical Spa`}
-                      width={640}
+                      width={1100}
                       loading="lazy"
-                      class="h-full w-full object-contain p-4 transition duration-500 group-hover:scale-105"
+                      class="h-full w-full object-contain transition duration-500 group-hover:scale-105"
                     />
                   ) : (
                     <span class="font-serif text-3xl text-navy/40">{d.name}</span>
                   )}
                 </div>
-                <div class="flex flex-1 flex-col p-6">
-                  <h3 class="font-serif text-2xl">{d.name}</h3>
-                  <p class="mt-2 text-mist">{lines[d.slug]}</p>
+                <div class="flex flex-1 flex-col p-7 lg:p-8">
+                  <h3 class="font-serif text-3xl">{d.name}</h3>
+                  <p class="mt-2 text-lg text-mist">{lines[d.slug]}</p>
                   <span class="mt-auto pt-5 font-semibold text-gold">Learn more →</span>
                 </div>
               </a>
