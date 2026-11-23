@@ -8,10 +8,10 @@ type Props = { t: Treatment; hero: Photo; process: Photo; why: Photo; local: Pho
 
 const mapsUrl = (q: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 
-function Breadcrumbs({ name }: { name: string }) {
+function Breadcrumbs({ name, section }: { name: string; section?: { label: string; href: string } }) {
   const items = [
     { label: 'Home', href: '/' },
-    { label: 'Treatments', href: '/#care' },
+    { label: section?.label ?? 'Treatments', href: section?.href ?? '/#care' },
     { label: name, href: null },
   ];
   return (
@@ -46,7 +46,7 @@ export default function TreatmentPage({ t, hero, process, why, local }: Props) {
           className="pointer-events-none absolute -right-40 top-0 h-[34rem] w-[34rem] rounded-full bg-gold/15 blur-[120px]"
         />
         <div className="container-x relative">
-          <Breadcrumbs name={t.name} />
+          <Breadcrumbs name={t.name} section={t.section} />
           <div className="grid gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-14">
             <Reveal className="flex flex-col justify-center lg:col-span-6">
               <p className="eyebrow eyebrow-dark">Sarasota · Venice · Florida</p>

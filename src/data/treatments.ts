@@ -1,4 +1,5 @@
 import { hormone } from './content';
+import { miracleDevices } from './miracle';
 
 export type Step = { title: string; text: string };
 export type Treatment = {
@@ -28,6 +29,7 @@ export type Treatment = {
   why: Step[];
   faqs: { q: string; a: string }[];
   ctaLabel: string;
+  section?: { label: string; href: string };
 };
 
 export const nearbyAreas = ['Sarasota', 'Venice', 'Siesta Key', 'Osprey', 'Nokomis', 'North Port', 'Lakewood Ranch'];
@@ -416,4 +418,4 @@ const iv: Treatment = {
 };
 
 export const treatments: Treatment[] = [hormoneT, stem, exosome, peptide, weight, iv];
-export const getTreatment = (slug: string) => treatments.find((t) => t.slug === slug)!;
+export const getTreatment = (slug: string) => [...treatments, ...miracleDevices].find((t) => t.slug === slug)!;

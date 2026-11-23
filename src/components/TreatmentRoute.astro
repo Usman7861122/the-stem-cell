@@ -18,7 +18,7 @@ const breadcrumbs = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', site.url).href },
-    { '@type': 'ListItem', position: 2, name: 'Treatments', item: new URL('/#care', site.url).href },
+    { '@type': 'ListItem', position: 2, name: t.section?.label ?? 'Treatments', item: new URL(t.section?.href ?? '/#care', site.url).href },
     { '@type': 'ListItem', position: 3, name: t.name, item: url },
   ],
 };

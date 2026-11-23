@@ -1,6 +1,7 @@
 ---
 import { nav, locations } from '../../data/content';
 const treatments = nav.find((n) => n.label === 'Treatments')?.children ?? [];
+const miracle = nav.find((n) => n.label === 'MIRACLE Medical Spa')?.children ?? [];
 ---
 
 <section aria-labelledby="explore-links" class="section-pad bg-ivory">
@@ -18,6 +19,16 @@ const treatments = nav.find((n) => n.label === 'Treatments')?.children ?? [];
                   {t.label} in Sarasota &amp; Venice
                 </a>
                 {t.desc && <span class="block text-slate">{t.desc}</span>}
+              </li>
+            ))
+          }
+          {
+            miracle.map((m) => (
+              <li>
+                <a href={m.href} class="font-semibold text-navy underline-offset-4 hover:text-gold-deep hover:underline">
+                  {m.label === 'MIRACLE Medical Spa' ? 'MIRACLE Medical Spa: Emsculpt, Emsella, Exomind and Emvital' : `${m.label} at MIRACLE Medical Spa`}
+                </a>
+                {m.desc && <span class="block text-slate">{m.desc}</span>}
               </li>
             ))
           }

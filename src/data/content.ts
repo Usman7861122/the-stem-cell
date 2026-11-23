@@ -28,6 +28,17 @@ export const nav: NavItem[] = [
     ],
   },
   {
+    label: 'MIRACLE Medical Spa',
+    href: '/miracle-medical-spa/',
+    children: [
+      { label: 'MIRACLE Medical Spa', href: '/miracle-medical-spa/', desc: 'Four advanced BTL technologies' },
+      { label: 'Emsculpt', href: '/miracle-medical-spa/emsculpt/', desc: 'Muscle toning and strengthening' },
+      { label: 'Emsella', href: '/miracle-medical-spa/emsella/', desc: 'Pelvic floor chair for bladder control' },
+      { label: 'Exomind', href: '/miracle-medical-spa/exomind/', desc: 'Magnetic stimulation for depression' },
+      { label: 'Emvital', href: '/miracle-medical-spa/emvital/', desc: 'Gentle heat for muscle and joint relief' },
+    ],
+  },
+  {
     label: 'Resources',
     href: '/rebuilding-brains/',
     children: [
@@ -290,6 +301,12 @@ export const footerLinks = {
     { label: 'Peptide Therapy', href: '/peptide-therapy/' },
     { label: 'Weight Loss', href: '/weight-loss/' },
     { label: 'IV Therapy', href: '/iv-therapy/' },
+  ],
+  'MIRACLE Medical Spa': [
+    { label: 'Emsculpt', href: '/miracle-medical-spa/emsculpt/' },
+    { label: 'Emsella', href: '/miracle-medical-spa/emsella/' },
+    { label: 'Exomind', href: '/miracle-medical-spa/exomind/' },
+    { label: 'Emvital', href: '/miracle-medical-spa/emvital/' },
   ],
 };
 

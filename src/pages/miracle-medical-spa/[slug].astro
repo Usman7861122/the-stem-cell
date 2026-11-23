@@ -1,0 +1,11 @@
+---
+import TreatmentRoute from '../../components/TreatmentRoute.astro';
+import { miracleDevices } from '../../data/miracle';
+
+export function getStaticPaths() {
+  return miracleDevices.map((t) => ({ params: { slug: t.slug } }));
+}
+const { slug } = Astro.params;
+---
+
+<TreatmentRoute slug={slug as string} />

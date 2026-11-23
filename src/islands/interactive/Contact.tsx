@@ -224,6 +224,11 @@ export default function Contact({ photo }: { photo: Photo }) {
                             {l.name}
                           </option>
                         ))}
+                        {['Emsculpt', 'Emsella', 'Exomind', 'Emvital'].map((m) => (
+                          <option key={m} value={`MIRACLE Medical Spa: ${m}`}>
+                            MIRACLE Medical Spa: {m}
+                          </option>
+                        ))}
                       </select>
                     </div>
 

@@ -1,15 +1,17 @@
 import type { APIRoute } from 'astro';
 import { site, locations } from '../data/content';
 import { treatments } from '../data/treatments';
+import { miracleDevices } from '../data/miracle';
 
 // Lists every public page. Add new static pages to `staticPaths`.
-const staticPaths = ['/', '/about/', '/locations/', '/contact/', '/rebuilding-brains/'];
+const staticPaths = ['/', '/about/', '/locations/', '/contact/', '/rebuilding-brains/', '/miracle-medical-spa/'];
 
 export const GET: APIRoute = () => {
   const paths = [
     ...new Set([
       ...staticPaths,
       ...treatments.map((t) => `/${t.slug}/`),
+      ...miracleDevices.map((t) => t.href),
       ...locations.map((l) => `/locations/${l.id}/`),
     ]),
   ];
