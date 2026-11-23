@@ -172,11 +172,11 @@ export default function Header({ logo, logoLight }: { logo: Photo; logoLight?: P
         }`}
       >
         <div
-          className={`container-x flex items-center justify-between transition-[height] duration-500 ${
+          className={`container-x flex items-center justify-between gap-6 transition-[height] duration-500 ${
             scrolled ? 'h-[68px]' : 'h-[84px]'
           }`}
         >
-          <a href="/#top" aria-label="The Stem Cell Institute, home" className="block shrink-0">
+          <a href="/#top" aria-label="The Stem Cell Institute, home" className="mr-2 block shrink-0 2xl:mr-6">
             <img
               src={mark.src}
               width={mark.width}
@@ -186,7 +186,7 @@ export default function Header({ logo, logoLight }: { logo: Photo; logoLight?: P
             />
           </a>
 
-          <nav aria-label="Main" className="hidden items-center gap-6 self-stretch 2xl:gap-9 xl:flex">
+          <nav aria-label="Main" className="hidden items-center gap-5 self-stretch xl:flex 2xl:gap-7 min-[1760px]:gap-9">
             {nav.map((l) =>
               l.children ? (
                 <DropdownItem key={l.label} item={l} onToggle={setMega} light={light} />
@@ -202,7 +202,7 @@ export default function Header({ logo, logoLight }: { logo: Photo; logoLight?: P
           <div className="flex items-center gap-3">
             <a
               href={site.phoneHref}
-              className={`hidden items-center gap-2 whitespace-nowrap text-sm font-semibold transition-colors duration-300 2xl:flex ${light ? 'text-ivory' : 'text-ink'}`}
+              className={`hidden items-center gap-2 whitespace-nowrap text-sm font-semibold transition-colors duration-300 min-[1760px]:flex ${light ? 'text-ivory' : 'text-ink'}`}
             >
               <Phone size={16} aria-hidden /> {site.phone}
             </a>
