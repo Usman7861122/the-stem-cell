@@ -14,8 +14,15 @@ export const stacks: Stack[] = [
   { name: 'Megamind Stack', peptides: ['KPV', 'Semax'], price: '$1,750', color: '#2f6fe0' },
 ];
 
-// Hover details for blends. TODO: confirm the exact ingredients with the supplier before publishing.
-export const blendInfo: Record<string, string> = {
-  'Wolverine Blend': 'A blend of two peptides: BPC-157 and TB-500.',
-  'KLOW Blend': 'A blend of four peptides: GHK-Cu, KPV, BPC-157 and TB-500.',
+// Hover details for blends. TODO: confirm the exact ingredients and wording with the supplier/physician before publishing.
+export type BlendInfo = { what: string; use: string };
+export const blendInfo: Record<string, BlendInfo> = {
+  'Wolverine Blend': {
+    what: 'A combination of two synthetic peptides: BPC-157 and TB-500.',
+    use: 'Commonly marketed for muscle, tendon, ligament and soft-tissue recovery.',
+  },
+  'KLOW Blend': {
+    what: 'A combination of four peptides: GHK-Cu, KPV, BPC-157 and TB-500.',
+    use: 'Commonly marketed for skin, tissue recovery and inflammation support.',
+  },
 };
