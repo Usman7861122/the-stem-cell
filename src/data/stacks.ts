@@ -13,3 +13,9 @@ export const stacks: Stack[] = [
   { name: 'Cat Woman Stack (KLOW)', peptides: ['KLOW Blend'], price: '$1,950', color: '#3b2349' },
   { name: 'Megamind Stack', peptides: ['KPV', 'Semax'], price: '$1,750', color: '#2f6fe0' },
 ];
+
+// Hover details for blends. TODO: confirm the exact ingredients with the supplier before publishing.
+export const blendInfo: Record<string, string> = {
+  'Wolverine Blend': 'A blend of two peptides: BPC-157 and TB-500.',
+  'KLOW Blend': 'A blend of four peptides: GHK-Cu, KPV, BPC-157 and TB-500.',
+};
