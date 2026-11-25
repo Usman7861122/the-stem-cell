@@ -26,66 +26,92 @@ import { stacks, blendInfo, PROGRAM_WEEKS, perWeek, perMonth } from '../data/sta
       works out to per week and per month. Offered after a physician evaluation.
     </p>
 
-    <ul class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div role="table" aria-label="Superpower peptide stacks and prices" class="mt-12 rounded-2xl bg-white shadow-xl ring-1 ring-ink/10">
+      <div
+        role="row"
+        class="hidden rounded-t-2xl bg-navy px-6 py-4 text-xs font-bold uppercase tracking-[0.16em] text-gold lg:grid lg:grid-cols-[minmax(0,1.5fr)_minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-6"
+      >
+        <span role="columnheader" class="pl-4">Stack</span>
+        <span role="columnheader">Peptides</span>
+        <span role="columnheader" class="text-right">Total · {PROGRAM_WEEKS} weeks</span>
+        <span role="columnheader" class="text-right">Per week</span>
+        <span role="columnheader" class="text-right">Per month</span>
+      </div>
+
       {
-        stacks.map((s) => (
-          <li class="list-none">
-            <article class="flex h-full flex-col rounded-2xl bg-white shadow-sm ring-1 ring-ink/10 transition duration-300 hover:-translate-y-1 hover:shadow-lg">
-              <div class="h-2 rounded-t-2xl" style={`background:${s.color}`} aria-hidden="true" />
-              <div class="flex flex-1 flex-col p-7">
-                <div class="flex items-start gap-4">
-                  <span
-                    class="grid h-12 w-12 shrink-0 place-items-center rounded-full font-serif text-xl"
-                    style={`background:${s.color};color:${s.dark ? '#0a1a2f' : '#fff'}`}
-                    aria-hidden="true"
-                  >
-                    {s.name.charAt(0)}
-                  </span>
-                  <h3 class="font-serif text-2xl leading-tight">{s.name}</h3>
-                </div>
-                <ul class="mt-5 flex flex-wrap gap-2">
-                  {
-                    s.peptides.map((p) => (
-                      <li class="relative list-none">
-                        <span class="inline-flex items-center gap-1.5 rounded-full bg-sand px-3 py-1 text-sm font-semibold text-navy">
-                          {p}
-                          {blendInfo[p] && (
-                            <span class="group/tip relative inline-flex">
-                              <button
-                                type="button"
-                                aria-label={`About ${p}`}
-                                aria-describedby={`tip-${s.name.replace(/\W+/g, '-')}-${p.replace(/\W+/g, '-')}`}
-                                class="grid h-5 w-5 place-items-center rounded-full border border-navy/40 font-serif text-xs italic leading-none text-navy transition hover:bg-navy hover:text-white focus-visible:bg-navy focus-visible:text-white"
-                              >
-                                i
-                              </button>
-                              <span
-                                role="tooltip"
-                                id={`tip-${s.name.replace(/\W+/g, '-')}-${p.replace(/\W+/g, '-')}`}
-                                class="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 w-64 -translate-x-1/2 sm:w-80 rounded-lg bg-ink px-3 py-2 text-left text-xs font-normal leading-relaxed text-ivory opacity-0 shadow-lg transition  group-hover/tip:opacity-100  group-focus-within/tip:opacity-100"
-                              >
-                                <strong class="block text-sm font-semibold text-gold">{p}</strong>
-                                <span class="mt-1.5 block">{blendInfo[p].what}</span>
-                                <span class="mt-1.5 block">{blendInfo[p].use}</span>
-                              </span>
-                            </span>
-                          )}
+        stacks.map((s, i) => (
+          <div
+            role="row"
+            class:list={[
+              'relative grid gap-x-6 gap-y-3 px-5 py-6 transition-colors duration-200 hover:bg-gold/10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:px-6 lg:py-5',
+              i % 2 === 1 ? 'bg-sand/60' : 'bg-white',
+              i === stacks.length - 1 && 'rounded-b-2xl',
+            ]}
+          >
+            <span class="absolute inset-y-0 left-0 w-1.5" style={`background:${s.color}`} aria-hidden="true" />
+
+            <div role="cell" class="flex items-center gap-4 lg:pl-4">
+              <span
+                class="grid h-11 w-11 shrink-0 place-items-center rounded-full font-serif text-lg shadow-sm"
+                style={`background:${s.color};color:${s.dark ? '#0a1a2f' : '#fff'}`}
+                aria-hidden="true"
+              >
+                {s.name.charAt(0)}
+              </span>
+              <span class="font-serif text-xl leading-tight lg:text-[1.35rem]">{s.name}</span>
+            </div>
+
+            <ul role="cell" class="flex flex-wrap gap-2">
+              {
+                s.peptides.map((p) => (
+                  <li class="relative list-none">
+                    <span class="inline-flex items-center gap-1.5 rounded-full bg-sand px-3 py-1 text-sm font-semibold text-navy ring-1 ring-ink/5">
+                      {p}
+                      {blendInfo[p] && (
+                        <span class="group/tip relative inline-flex">
+                          <button
+                            type="button"
+                            aria-label={`About ${p}`}
+                            aria-describedby={`tip-${s.name.replace(/\W+/g, '-')}-${p.replace(/\W+/g, '-')}`}
+                            class="grid h-5 w-5 place-items-center rounded-full border border-navy/40 font-serif text-xs italic leading-none text-navy transition hover:bg-navy hover:text-white focus-visible:bg-navy focus-visible:text-white"
+                          >
+                            i
+                          </button>
+                          <span
+                            role="tooltip"
+                            id={`tip-${s.name.replace(/\W+/g, '-')}-${p.replace(/\W+/g, '-')}`}
+                            class="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 w-64 -translate-x-1/2 rounded-lg bg-ink px-3 py-2 text-left text-xs font-normal leading-relaxed text-ivory opacity-0 shadow-lg transition group-hover/tip:opacity-100 group-focus-within/tip:opacity-100 sm:w-80"
+                          >
+                            <strong class="block text-sm font-semibold text-gold">{p}</strong>
+                            <span class="mt-1.5 block">{blendInfo[p].what}</span>
+                            <span class="mt-1.5 block">{blendInfo[p].use}</span>
+                          </span>
                         </span>
-                      </li>
-                    ))
-                  }
-                </ul>
-                <p class="mt-auto pt-6 text-sm text-slate">{PROGRAM_WEEKS}-week program · MSRP</p>
-                <p class="font-serif text-3xl text-gold-deep">{s.price}</p>
-                <p class="mt-3 rounded-xl bg-sand px-4 py-3 text-sm font-semibold text-navy">
-                  About ${perWeek(s.price)} per week <span class="text-slate">·</span> ${perMonth(s.price)} per month
-                </p>
+                      )}
+                    </span>
+                  </li>
+                ))
+              }
+            </ul>
+
+            <div class="grid grid-cols-3 gap-4 lg:contents">
+              <div role="cell" class="lg:text-right">
+                <p class="text-xs font-semibold uppercase tracking-wider text-slate lg:hidden">Total · {PROGRAM_WEEKS} wks</p>
+                <p class="font-serif text-2xl text-gold-deep lg:text-[1.6rem]">{s.price}</p>
               </div>
-            </article>
-          </li>
+              <div role="cell" class="lg:text-right">
+                <p class="text-xs font-semibold uppercase tracking-wider text-slate lg:hidden">Per week</p>
+                <p class="text-lg font-bold text-navy">${perWeek(s.price)}</p>
+              </div>
+              <div role="cell" class="lg:text-right">
+                <p class="text-xs font-semibold uppercase tracking-wider text-slate lg:hidden">Per month</p>
+                <p class="inline-block rounded-full bg-navy px-3 py-1 text-lg font-bold text-gold">${perMonth(s.price)}</p>
+              </div>
+            </div>
+          </div>
         ))
       }
-    </ul>
+    </div>
 
     <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
       <a href="/#contact" class="btn btn-primary">Book a Peptide Consultation</a>
