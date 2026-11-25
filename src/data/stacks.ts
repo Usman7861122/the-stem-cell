@@ -26,3 +26,10 @@ export const blendInfo: Record<string, BlendInfo> = {
     use: 'Commonly marketed for skin, tissue recovery and inflammation support.',
   },
 };
+
+// Each stack is treated as a 16-week program. Weekly and monthly prices are the total divided over that time.
+export const PROGRAM_WEEKS = 16;
+const amount = (price: string) => Number(price.replace(/[^0-9.]/g, ''));
+const fmt = (n: number) => Math.round(n).toLocaleString('en-US');
+export const perWeek = (price: string) => fmt(amount(price) / PROGRAM_WEEKS);
+export const perMonth = (price: string) => fmt((amount(price) / PROGRAM_WEEKS) * (52 / 12));

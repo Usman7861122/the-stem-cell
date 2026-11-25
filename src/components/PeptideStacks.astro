@@ -1,13 +1,29 @@
 ---
-import { stacks, blendInfo } from '../data/stacks';
+import { stacks, blendInfo, PROGRAM_WEEKS, perWeek, perMonth } from '../data/stacks';
 ---
+
+<style is:global>
+  @font-face {
+    font-family: 'Super Wide';
+    src: url('../assets/fonts/alfa-slab-one-latin.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  .font-wide {
+    font-family: 'Super Wide', 'Wide Latin', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+  }
+</style>
 
 <section id="peptide-stacks" aria-labelledby="stacks-title" class="section-pad bg-sand text-ink">
   <div class="container-x">
     <p class="eyebrow">Peptide Therapy</p>
-    <h2 id="stacks-title" class="h-section mt-5 max-w-4xl">The Super Power <em class="text-gold-deep">Peptide Program</em></h2>
+    <h2 id="stacks-title" class="h-section mt-5 max-w-4xl">The <span class="font-wide text-navy">SUPERPOWER</span> <em class="text-gold-deep">Peptide Program</em></h2>
     <p class="lead mt-5 max-w-2xl">
-      Ready-made combinations of peptides, offered after a physician evaluation. Your physician decides if a stack is right for you.
+      Each stack is a complete program of about {PROGRAM_WEEKS} weeks (almost 4 months) of treatment. See the total, and what it
+      works out to per week and per month. Offered after a physician evaluation.
     </p>
 
     <ul class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -59,8 +75,11 @@ import { stacks, blendInfo } from '../data/stacks';
                     ))
                   }
                 </ul>
-                <p class="mt-auto pt-6 text-sm text-slate">MSRP</p>
+                <p class="mt-auto pt-6 text-sm text-slate">{PROGRAM_WEEKS}-week program · MSRP</p>
                 <p class="font-serif text-3xl text-gold-deep">{s.price}</p>
+                <p class="mt-3 rounded-xl bg-sand px-4 py-3 text-sm font-semibold text-navy">
+                  About ${perWeek(s.price)} per week <span class="text-slate">·</span> ${perMonth(s.price)} per month
+                </p>
               </div>
             </article>
           </li>
@@ -73,7 +92,7 @@ import { stacks, blendInfo } from '../data/stacks';
       <a href="/peptide-therapy/" class="font-semibold text-navy underline-offset-4 hover:text-gold-deep hover:underline">About peptide therapy</a>
     </div>
     <p class="mt-6 max-w-3xl text-sm text-slate">
-      Prices are suggested retail (MSRP) and may change. Peptide therapy is directed by a licensed physician after an evaluation. Results vary and are not guaranteed.
+      Prices are suggested retail (MSRP) and may change. Per-week and per-month figures are the total price spread over {PROGRAM_WEEKS} weeks, for comparison only. Peptide therapy is directed by a licensed physician after an evaluation. Results vary and are not guaranteed.
     </p>
   </div>
 </section>
