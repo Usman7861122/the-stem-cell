@@ -1,4 +1,5 @@
 ---
+import { cherryConfig, cherryScriptUrl } from '../data/cherry';
 import '@fontsource/dm-serif-display/400.css';
 import '@fontsource/dm-serif-display/400-italic.css';
 import '@fontsource-variable/manrope';
@@ -98,5 +99,22 @@ const jsonLd = {
       >Skip to content</a
     >
     <slot />
+    <script
+      is:inline
+      define:vars={{ cfg: cherryConfig, src: cherryScriptUrl }}
+    >
+      // Cherry financing widget: loads after the page has finished loading so it never slows the first view.
+      (function (w, d, o, f) {
+        w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments); };
+        var load = function () {
+          var js = d.createElement('script');
+          js.id = o; js.src = f; js.async = 1;
+          d.head.appendChild(js);
+        };
+        if (d.readyState === 'complete') setTimeout(load, 1200);
+        else w.addEventListener('load', function () { setTimeout(load, 1200); });
+      })(window, document, '_hw', src);
+      _hw('init', cfg, ['floatingEstimator']);
+    </script>
   </body>
 </html>

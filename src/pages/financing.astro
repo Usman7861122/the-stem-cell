@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/layout/Footer.astro';
+import { getPhotos, type Photo } from '../lib/images';
+import { site } from '../data/content';
+import { cherryConfig, cherryPageStyles } from '../data/cherry';
+import Header from '../islands/interactive/Header';
+import Contact from '../islands/interactive/Contact';
+
+const p = (await getPhotos()) as unknown as Record<string, Photo> & { logo: Photo; reception: Photo };
+const url = new URL('/financing/', site.url).href;
+const title = 'Patient Financing in Sarasota, FL | Stem Cell Institute';
+const description =
+  'Pay over time with Cherry. See if you qualify in about 60 seconds with no hard credit check, then book a consultation at our Sarasota or Venice clinic.';
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', site.url).href },
+    { '@type': 'ListItem', position: 2, name: 'Financing', item: url },
+  ],
+};
+const pageInit = { ...cherryConfig, styles: cherryPageStyles };
+---
+
+<BaseLayout title={title} description={description} extraJsonLd={[breadcrumbs]}>
+  <Header client:load logo={p.logo} logoLight={p.logoLight} />
+  <main id="main">
+    <section class="bg-ivory pb-16 pt-28 text-ink lg:pt-32">
+      <div class="container-x">
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm text-slate">
+          <a href="/" class="underline-offset-4 hover:text-gold-deep hover:underline">Home</a>
+          <span aria-hidden> / </span>
+          <span aria-current="page" class="font-semibold text-ink">Financing</span>
+        </nav>
+        <h1 class="sr-only">Patient financing at The Stem Cell Institute in Sarasota and Venice</h1>
+        <!-- Cherry widgets render into these containers -->
+        <div id="all"></div>
+        <div id="hero"></div>
+        <div id="calculator"></div>
+        <div id="howitworks"></div>
+        <div id="testimony"></div>
+        <div id="faq"></div>
+        <p class="mt-10 max-w-3xl text-sm text-slate">
+          Financing is offered by Cherry and subject to approval. Terms and rates vary. This page is for general information and is
+          not medical advice. Treatment is directed by a licensed physician after an evaluation.
+        </p>
+      </div>
+    </section>
+    <Contact client:visible photo={p.reception} />
+  </main>
+  <Footer />
+  <script is:inline define:vars={{ pageInit }}>
+    // Wait until the shared _hw stub (defined in the layout) exists.
+    document.addEventListener('DOMContentLoaded', function () {
+      _hw('init', pageInit, ['hero', 'calculator', 'howitworks', 'faq']);
+    });
+  </script>
+</BaseLayout>

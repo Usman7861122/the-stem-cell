@@ -292,6 +292,7 @@ export const footerLinks = {
     { label: 'Your Path to Wellness', href: '/#path' },
     { label: 'Gallery', href: '/#gallery' },
     { label: 'Locations', href: '/locations/' },
+    { label: 'Financing', href: '/financing/' },
     { label: 'Contact', href: '/contact/' },
   ],
   Treatments: [
